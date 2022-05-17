@@ -1,0 +1,101 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "fvsd_schoolsections",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "fvsd_schoolsection",
+    "MaxGetRowsCount": 500,
+    "Name": "School Sections",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "fvsd_coursename": "Course Name",
+      "fvsd_courseno": "Course No",
+      "fvsd_name": "Name",
+      "fvsd_school": "School",
+      "fvsd_schoolsection_AsyncOperations": "System Jobs",
+      "fvsd_schoolsection_BulkDeleteFailures": "Bulk Delete Failures",
+      "fvsd_schoolsection_DuplicateBaseRecord": "Duplicate Records (fvsd_schoolsection_DuplicateBaseRecord)",
+      "fvsd_schoolsection_DuplicateMatchingRecord": "Duplicate Records (fvsd_schoolsection_DuplicateMatchingRecord)",
+      "fvsd_schoolsection_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "fvsd_schoolsection_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "fvsd_schoolsection_ProcessSession": "Process Sessions",
+      "fvsd_schoolsection_SyncErrors": "Sync Errors",
+      "fvsd_schoolsectionid": "School Section",
+      "fvsd_schoolyear": "School Year",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "School Sections",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "School Sections (Views)",
+    "Name": "_fvsd_schoolsection_views",
+    "RelatedEntityName": "School Sections",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "2407ec87-44ba-40c9-b4d0-1e61c23fc24e": "School Section Lookup View",
+      "50b501af-84c3-4ef3-b02c-87a3f5e71152": "School Section Associated View",
+      "796ad8ec-f00d-440f-9ee0-f3f21a60e070": "Inactive School Sections",
+      "a43b7052-beed-480e-80dd-6a6f87ef9668": "School Section Advanced Find View",
+      "bf1923d1-57d8-4678-b038-643354e5c90b": "Active School Sections"
+    }
+  },
+  {
+    "DisplayName": "Status (School Sections)",
+    "Name": "fvsd_schoolsection_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "School Sections"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "School Sections",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (School Sections)",
+    "Name": "fvsd_schoolsection_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "School Sections"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "School Sections",
+    "Type": "OptionSetInfo"
+  }
+]

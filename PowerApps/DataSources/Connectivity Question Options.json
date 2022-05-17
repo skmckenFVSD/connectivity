@@ -1,0 +1,123 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "fvsd_connectivityquestionoptions",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "fvsd_connectivityquestionoption",
+    "MaxGetRowsCount": 500,
+    "Name": "Connectivity Question Options",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "fvsd_connectivityquestionoption_AsyncOperations": "System Jobs",
+      "fvsd_connectivityquestionoption_BulkDeleteFailures": "Bulk Delete Failures",
+      "fvsd_connectivityquestionoption_DuplicateBaseRecord": "Duplicate Records (fvsd_connectivityquestionoption_DuplicateBaseRecord)",
+      "fvsd_connectivityquestionoption_DuplicateMatchingRecord": "Duplicate Records (fvsd_connectivityquestionoption_DuplicateMatchingRecord)",
+      "fvsd_connectivityquestionoption_FileAttachments": "FileAttachments",
+      "fvsd_connectivityquestionoption_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "fvsd_connectivityquestionoption_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "fvsd_connectivityquestionoption_ProcessSession": "Process Sessions",
+      "fvsd_connectivityquestionoption_SyncErrors": "Sync Errors",
+      "fvsd_connectivityquestionoptionid": "Connectivity Question Option",
+      "fvsd_connectivitysurveyresponse_questionoption": "Connectivity Survey Responses",
+      "fvsd_image": "Image",
+      "fvsd_name": "Name",
+      "fvsd_optionorder": "Option Order",
+      "fvsd_question": "Question",
+      "fvsd_responseflagged": "Response Flagged",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Connectivity Question Options",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Connectivity Question Options (Views)",
+    "Name": "_fvsd_connectivityquestionoption_views",
+    "RelatedEntityName": "Connectivity Question Options",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "8354e8b6-bb44-41a2-9c4e-f542364f6baa": "Inactive Connectivity Question Options",
+      "c3956f5b-6869-40df-b4ef-123d90164bea": "Active Connectivity Question Options",
+      "da189bb0-4143-4c84-b085-cbb246a599d5": "Connectivity Question Option Associated View",
+      "e38875c4-5777-40f5-8e95-4a0fbf9c744e": "Connectivity Question Option Advanced Find View",
+      "eca9c290-0e6a-437a-9142-48f4e5cca92e": "Connectivity Question Option Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Connectivity Question Options)",
+    "Name": "fvsd_connectivityquestionoption_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Connectivity Question Options"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Connectivity Question Options",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Connectivity Question Options)",
+    "Name": "fvsd_connectivityquestionoption_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Connectivity Question Options"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Connectivity Question Options",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Response Flagged (Connectivity Question Options)",
+    "Name": "fvsd_fvsd_connectivityquestionoption_responseflagged",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "fvsd_responseflagged",
+        "OptionSetReferenceEntityName": "Connectivity Question Options"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "fvsd_responseflagged",
+    "RelatedEntityName": "Connectivity Question Options",
+    "Type": "OptionSetInfo"
+  }
+]

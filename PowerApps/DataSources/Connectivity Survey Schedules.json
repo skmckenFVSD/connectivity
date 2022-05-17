@@ -1,0 +1,153 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "fvsd_connectivitysurveyschedules",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "fvsd_connectivitysurveyschedule",
+    "MaxGetRowsCount": 500,
+    "Name": "Connectivity Survey Schedules",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "fvsd_addtodivisionsurvey": "Add to Division Survey",
+      "fvsd_closedate": "Close Date",
+      "fvsd_connectivitysurvey_schedule": "Connectivity Surveys",
+      "fvsd_connectivitysurveyschedule_AsyncOperations": "System Jobs",
+      "fvsd_connectivitysurveyschedule_BulkDeleteFailures": "Bulk Delete Failures",
+      "fvsd_connectivitysurveyschedule_division": "Connectivity Survey Schedules",
+      "fvsd_connectivitysurveyschedule_DuplicateBaseRecord": "Duplicate Records (fvsd_connectivitysurveyschedule_DuplicateBaseRecord)",
+      "fvsd_connectivitysurveyschedule_DuplicateMatchingRecord": "Duplicate Records (fvsd_connectivitysurveyschedule_DuplicateMatchingRecord)",
+      "fvsd_connectivitysurveyschedule_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "fvsd_connectivitysurveyschedule_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "fvsd_connectivitysurveyschedule_ProcessSession": "Process Sessions",
+      "fvsd_connectivitysurveyschedule_SyncErrors": "Sync Errors",
+      "fvsd_connectivitysurveyscheduleid": "Connectivity Survey Schedule",
+      "fvsd_divisionsurvey": "Division Survey",
+      "fvsd_name": "Name",
+      "fvsd_opendate": "Open Date",
+      "fvsd_period": "Period",
+      "fvsd_schedulescope": "Schedule Scope",
+      "fvsd_school": "School",
+      "fvsd_schoolyear": "School Year",
+      "fvsd_surveyschedulequestion_schedule": "Connectivity Survey Schedule Questions",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Connectivity Survey Schedules",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Connectivity Survey Schedules (Views)",
+    "Name": "_fvsd_connectivitysurveyschedule_views",
+    "RelatedEntityName": "Connectivity Survey Schedules",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "7132a6e9-ef99-480a-b059-25025889d8d3": "Active Connectivity Survey Schedules",
+      "74d798c5-0a1c-4907-9a40-33f6692135b6": "Connectivity Survey Schedule Associated View",
+      "7b01f0cc-ff6e-40d8-9b01-becd01e9b499": "Connectivity Survey Schedule Lookup View",
+      "98b4680a-63bd-4898-a1ec-de6c158f3153": "Inactive Connectivity Survey Schedules",
+      "e91f936e-0d16-4a90-ac64-a072976bf0be": "Connectivity Survey Schedule Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (Connectivity Survey Schedules)",
+    "Name": "fvsd_connectivitysurveyschedule_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Connectivity Survey Schedules"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Connectivity Survey Schedules",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Connectivity Survey Schedules)",
+    "Name": "fvsd_connectivitysurveyschedule_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Connectivity Survey Schedules"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Connectivity Survey Schedules",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Add to Division Survey (Connectivity Survey Schedules)",
+    "Name": "fvsd_fvsd_connectivitysurveyschedule_addtodivisionsurvey",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "fvsd_addtodivisionsurvey",
+        "OptionSetReferenceEntityName": "Connectivity Survey Schedules"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "fvsd_addtodivisionsurvey",
+    "RelatedEntityName": "Connectivity Survey Schedules",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Period Choices",
+    "Name": "fvsd_period",
+    "OptionSetInfoNameMapping": {
+      "102370000": "Fall",
+      "102370001": "Winter",
+      "102370002": "Spring"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "fvsd_period",
+        "OptionSetReferenceEntityName": "Connectivity Survey Schedules"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "fvsd_period",
+        "OptionSetReferenceEntityName": "Connectivity Surveys"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "fvsd_period",
+    "RelatedEntityName": "Connectivity Survey Schedules",
+    "Type": "OptionSetInfo"
+  }
+]

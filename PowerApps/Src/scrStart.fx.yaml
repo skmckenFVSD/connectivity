@@ -1,0 +1,267 @@
+scrStart As screen:
+    OnVisible: |-
+        =//Set Survey Not Ready
+            UpdateContext({varSurveyReady:false});
+            Clear(colStudentAnswers);
+            Clear(colRatingResponse);
+        
+        //Get Selected Student Sections
+            ClearCollect(colStudentSections,
+                RenameColumns(     
+                    ShowColumns(
+                        Filter('Student Sections',
+                            'School Year'=varFilteredSchoolYear,
+                            'School ID' = varFilteredSchoolID,
+                            ASN = varSelectedStudent.ASN
+                            ),
+                    "fvsd_coursename"),
+                "fvsd_coursename","Student Section")
+            );
+        
+        //Get Selected Schedules
+            ClearCollect(colSelectedSchedules,
+                AddColumns(
+                    Filter('Connectivity Survey Schedules',
+                        Or('Connectivity Survey Schedule'=varSelectedSchedule.'Connectivity Survey Schedule',
+                            'Division Survey'.'Connectivity Survey Schedule'=varSelectedSchedule.'Connectivity Survey Schedule')),
+                "SurveyGUID",'Connectivity Survey Schedule')
+            );
+        
+        //Get Schedule Questions
+            ClearCollect(colScheduleQuestions,
+                AddColumns(
+                    Filter(
+                        AddColumns('Connectivity Survey Schedule Questions',
+                        "SurveyGUID", 'Survey Schedule'.'Connectivity Survey Schedule'),
+                    'Survey Schedule'.'Connectivity Survey Schedule'in colSelectedSchedules.SurveyGUID),
+                "QuestionGUID",Question.'Connectivity Question'));
+        
+        //Get Questions
+            ClearCollect(colQuestions,
+                With(
+                    {
+                        records:
+                                RenameColumns(
+                                    SortByColumns(
+                                        DropColumns(
+                                            AddColumns(
+                                                ShowColumns(
+                                                    Filter('Connectivity Questions',
+                                                        'Connectivity Question' in colScheduleQuestions.QuestionGUID,
+                                                        (varSelectedStudentDiv in 'Selected Div' Or IsBlank('Selected Div')),
+                                                        (varSelectedStudentGrade in 'Selected Grade' Or IsBlank('Selected Grade')),
+                                                        ('Selected Section' in colStudentSections Or IsBlank('Selected Section'))),
+                                                "fvsd_name", 
+                                                "fvsd_instruction",
+                                                "fvsd_questionscope",
+                                                "fvsd_questionorder",
+                                                "fvsd_questiontype",
+                                                "fvsd_selecteddiv",
+                                                "fvsd_selectedgrade",
+                                                "fvsd_selectedsection",
+                                                "fvsd_ratinglowvalue",
+                                                "fvsd_ratinghighvalue",
+                                                "fvsd_galleryoption",
+                                                "fvsd_connectivytquestionid"),       
+                                            "QuestionSort",
+                                                Switch(Text(fvsd_questionscope),
+                                                    "Division", "D-" & fvsd_questionorder,
+                                                    "Division - Div Specific", "DD-" & fvsd_questionorder,
+                                                    "Division - Grade Specific", "DG-" & fvsd_questionorder,
+                                                    "Division - Section Specific", "DS-" & fvsd_questionorder,
+                                                    "School", "S-" & fvsd_questionorder,
+                                                    "School - Div Specific", "SD-" & fvsd_questionorder,
+                                                    "School - Grade Specific", "SG-" & fvsd_questionorder,
+                                                    "School - Section Specific", "SS-" & fvsd_questionorder)),
+                                        "fvsd_questionorder"),
+                                    "QuestionSort", Ascending),
+                                "QuestionSort","Sort Order",
+                                "fvsd_name", "Question",
+                                "fvsd_instruction", "Instruction",
+                                "fvsd_questionscope", "Scope",
+                                "fvsd_questiontype", "Type",
+                                "fvsd_selecteddiv", "Filter Div",
+                                "fvsd_selectedgrade", "Filter Grade",
+                                "fvsd_selectedsection", "Filter Section",
+                                "fvsd_ratinglowvalue", "Low Rating",
+                                "fvsd_ratinghighvalue", "High Rating",
+                                "fvsd_galleryoption", "Gallery Option",
+                                "fvsd_connectivytquestionid", "Question GUID")
+                            },
+                            ForAll(
+                                Sequence(CountRows(records)),
+                                Patch(
+                                    Last(
+                                        FirstN(records,Value)),
+                                        {questionNumber: Value}
+                                    )
+                                )
+                            )
+            );
+        
+        //Get Question Options
+            ClearCollect(colQuestionOptions,
+            RenameColumns(
+                ShowColumns(
+                    AddColumns('Connectivity Question Options',
+                        "QuestionGUID",Question.'Connectivity Question',
+                        "OptionGUID",'Connectivity Question Option'
+                    ),
+                        "QuestionGUID","OptionGUID","fvsd_name","fvsd_image","fvsd_optionorder","fvsd_responseflagged"),
+            "fvsd_name","Option",
+            "fvsd_image", "Image",
+            "fvsd_optionorder", "Order",
+            "fvsd_responseflagged", "Flagged"));
+        
+        //Set Survey Not Ready
+            UpdateContext({varSurveyReady:true});
+
+    btnCancel As button:
+        BorderColor: =Self.Fill
+        BorderThickness: =1
+        Color: =RGBA(255,255,255,1)
+        DisabledBorderColor: =Self.Fill
+        DisabledColor: =Self.Color
+        DisabledFill: =Self.Fill
+        Fill: =RGBA(210,210,210,1)
+        FocusedBorderThickness: =1
+        Font: ="'Segoe UI', 'Open Sans', sans-serif"
+        FontWeight: =Bold
+        Height: =30
+        HoverBorderColor: =Self.Fill
+        HoverColor: =Self.Color
+        HoverFill: =ColorFade(Self.Fill, 20%)
+        OnSelect: |+
+            =//On Select
+                //Set Variables   
+                Set(varSelectedStudent,Blank());
+                Set(varSelectedStudentGrade,Blank());
+            
+                //Navigate
+                Navigate(scrMain,None)
+            
+            
+            
+        PressedColor: =Self.Color
+        PressedFill: =Self.Fill
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Size: =16
+        Text: ="Cancel Send"
+        Tooltip: |-
+            =//Set Tooltip Value
+             If(drpCollectionType.Selected.Value="Teams Chat",
+                "Click to Send the Survey",
+                "Click to Start the Survey"
+             )
+        Visible: |-
+            =//Set Visibility
+             If(drpCollectionType.Selected.Value="Teams Chat" && varSurveyReady ,
+                true,false
+             )
+        Width: =270
+        X: =(Parent.Width / 2) - (Self.Width / 2)
+        Y: =(btnStart.Y + btnStart.Height) + 20
+        ZIndex: =1
+
+    btnStart As button:
+        BorderColor: =Self.Fill
+        BorderThickness: =1
+        Color: =RGBA(255,255,255,1)
+        DisabledBorderColor: =Self.Fill
+        DisabledColor: =Self.Color
+        DisabledFill: =Self.Fill
+        Fill: =RGBA(245,166,38,1)
+        FocusedBorderThickness: =1
+        Font: ="'Segoe UI', 'Open Sans', sans-serif"
+        FontWeight: =Bold
+        Height: =60
+        HoverBorderColor: =Self.Fill
+        HoverColor: =Self.Color
+        HoverFill: =ColorFade(Self.Fill, 20%)
+        OnSelect: |+
+            =//Set On Select
+             If(drpCollectionType.Selected.Value="Teams Chat",
+                ClearCollect(colSendQuestions,
+                    ShowColumns(
+                        Filter(colScheduleQuestions,QuestionGUID in colQuestions.'Question GUID'),
+                    "SurveyGUID","QuestionGUID")
+                );
+                Set(varSendQuestionsJSON, JSON(colSendQuestions));
+                StudentQuestionCollection.Run(varSendQuestionsJSON,varSelectedStudent.Student,User().Email,varSelectedStudentGrade,varSelectedStudentDiv);
+                Navigate(scrMain,None),
+                Navigate(scrConnectivity,None)
+                )
+            
+            
+        PressedColor: =Self.Color
+        PressedFill: =Self.Fill
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Size: =26
+        Text: |-
+            =//Set Text Value
+             If(drpCollectionType.Selected.Value="Teams Chat",
+                "Send Survey",
+                "Start"
+             )
+        Tooltip: |-
+            =//Set Tooltip Value
+             If(drpCollectionType.Selected.Value="Teams Chat",
+                "Click to Send the Survey",
+                "Click to Start the Survey"
+             )
+        Visible: =varSurveyReady
+        Width: =270
+        X: =(Parent.Width / 2) - (Self.Width / 2)
+        Y: =(lblStartWelcome.Y + lblStartWelcome.Height) + 40
+        ZIndex: =2
+
+    lblStartWelcome As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Color: =RGBA(51, 51, 51, 1)
+        DisabledBorderColor: =Self.BorderColor
+        DisabledColor: =Self.Color
+        DisabledFill: =Self.Fill
+        Fill: =RGBA(255, 255, 255, 0)
+        Font: ="'Segoe UI', 'Open Sans', sans-serif"
+        FontWeight: =FontWeight.Semibold
+        Height: =Self.Size * 4
+        Size: =26
+        Text: |-
+            =//Set Text Value
+             If(drpCollectionType.Selected.Value="Teams Chat",
+                "Please click button below to send survey to " & Char(10) & varSelectedStudentName,
+                "Hello " & varSelectedStudentName & "." & Char(10) & "Please click button below to start"
+             )
+        Width: =Parent.Width / 1.5
+        X: =(Parent.Width / 2) - (Self.Width / 2)
+        Y: =(imgStartBanner.Y + imgStartBanner.Height) + 50
+        ZIndex: =3
+
+    imgStartBanner As image:
+        AccessibleLabel: ="FVSD Page Banner"
+        BorderColor: =Self.Fill
+        DisabledBorderColor: =Self.Fill
+        DisabledFill: =Self.Fill
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 1)
+        FocusedBorderColor: =Self.Fill
+        FocusedBorderThickness: =0
+        Height: =Parent.Height / 2
+        HoverBorderColor: =Self.Fill
+        HoverFill: =Self.Fill
+        Image: =FVSDBanner
+        ImagePosition: =ImagePosition.Fill
+        PaddingBottom: =10
+        PaddingTop: =10
+        PressedBorderColor: =Self.Fill
+        PressedFill: =Self.Fill
+        Width: =Parent.Width
+        ZIndex: =4
+

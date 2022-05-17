@@ -1,0 +1,247 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "fvsd_connectivytquestions",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "fvsd_connectivytquestion",
+    "MaxGetRowsCount": 500,
+    "Name": "Connectivity Questions",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "fvsd_connectivityquestionoption_question": "Connectivity Question Options",
+      "fvsd_connectivitysurveyresponse_question": "Connectivity Survey Responses",
+      "fvsd_connectivytquestion_AsyncOperations": "System Jobs",
+      "fvsd_connectivytquestion_BulkDeleteFailures": "Bulk Delete Failures",
+      "fvsd_connectivytquestion_DuplicateBaseRecord": "Duplicate Records (fvsd_connectivytquestion_DuplicateBaseRecord)",
+      "fvsd_connectivytquestion_DuplicateMatchingRecord": "Duplicate Records (fvsd_connectivytquestion_DuplicateMatchingRecord)",
+      "fvsd_connectivytquestion_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "fvsd_connectivytquestion_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "fvsd_connectivytquestion_ProcessSession": "Process Sessions",
+      "fvsd_connectivytquestion_SyncErrors": "Sync Errors",
+      "fvsd_connectivytquestionid": "Connectivity Question",
+      "fvsd_displayresponse": "Display Response",
+      "fvsd_galleryoption": "Gallery Option",
+      "fvsd_instruction": "Instruction",
+      "fvsd_name": "Name",
+      "fvsd_questionorder": "Question Order",
+      "fvsd_questionscope": "Question Scope",
+      "fvsd_questiontype": "Question Type",
+      "fvsd_ratinghighvalue": "Rating High Value",
+      "fvsd_ratinglowvalue": "Rating Low Value",
+      "fvsd_responsenotification": "Response Notification",
+      "fvsd_school": "School",
+      "fvsd_selecteddiv": "Selected Div",
+      "fvsd_selectedgrade": "Selected Grade",
+      "fvsd_selectedsection": "Selected Section",
+      "fvsd_sharequestion": "Share Question",
+      "fvsd_surveyschedulequestion_question": "Connectivity Survey Schedule Questions",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Connectivity Questions",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Connectivity Questions (Views)",
+    "Name": "_fvsd_connectivytquestion_views",
+    "RelatedEntityName": "Connectivity Questions",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "45b4de72-8c21-4cde-9cec-32e081964f1b": "Connectivity Question Advanced Find View",
+      "6cbca976-8ffa-4576-bdbf-e52a67f6ca2a": "Connectivity Question Associated View",
+      "7d4af23a-335c-42b0-9c65-c887d4d2a449": "Active Connectivity Questions",
+      "c815ca36-6bcf-49eb-9e60-71ad326be6a4": "Connectivity Question Lookup View",
+      "d3073eac-138e-466e-b939-ce1ff5421564": "Inactive Connectivity Questions"
+    }
+  },
+  {
+    "DisplayName": "Status (Connectivity Questions)",
+    "Name": "fvsd_connectivytquestion_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Connectivity Questions"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Connectivity Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Connectivity Questions)",
+    "Name": "fvsd_connectivytquestion_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Connectivity Questions"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Connectivity Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Display Response (Connectivity Questions)",
+    "Name": "fvsd_fvsd_connectivytquestion_displayresponse",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "fvsd_displayresponse",
+        "OptionSetReferenceEntityName": "Connectivity Questions"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "fvsd_displayresponse",
+    "RelatedEntityName": "Connectivity Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Response Notification (Connectivity Questions)",
+    "Name": "fvsd_fvsd_connectivytquestion_responsenotification",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "fvsd_responsenotification",
+        "OptionSetReferenceEntityName": "Connectivity Questions"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "fvsd_responsenotification",
+    "RelatedEntityName": "Connectivity Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Share Question (Connectivity Questions)",
+    "Name": "fvsd_fvsd_connectivytquestion_sharequestion",
+    "OptionSetInfoNameMapping": {
+      "0": "No",
+      "1": "Yes"
+    },
+    "OptionSetIsBooleanValued": true,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "fvsd_sharequestion",
+        "OptionSetReferenceEntityName": "Connectivity Questions"
+      }
+    },
+    "OptionSetTypeKey": "BooleanType",
+    "RelatedColumnInvariantName": "fvsd_sharequestion",
+    "RelatedEntityName": "Connectivity Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Gallery Option Choices",
+    "Name": "fvsd_galleryoptionchoices",
+    "OptionSetInfoNameMapping": {
+      "102370000": "Image",
+      "102370001": "Image and Label"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "fvsd_galleryoption",
+        "OptionSetReferenceEntityName": "Connectivity Questions"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "fvsd_galleryoption",
+    "RelatedEntityName": "Connectivity Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Question Scope Choices",
+    "Name": "fvsd_questionscopechoices",
+    "OptionSetInfoNameMapping": {
+      "102370000": "Division",
+      "102370001": "School",
+      "102370002": "Division - Div Specific",
+      "102370003": "Division - Grade Specific",
+      "102370004": "Division - Section Specific",
+      "102370005": "School - Div Specific",
+      "102370006": "School - Grade Specific",
+      "102370007": "School - Section Specific"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "fvsd_questionscope",
+        "OptionSetReferenceEntityName": "Connectivity Questions"
+      },
+      "OptionSetReferenceItem1": {
+        "OptionSetReferenceColumnName": "fvsd_schedulescope",
+        "OptionSetReferenceEntityName": "Connectivity Survey Schedules"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "fvsd_questionscope",
+    "RelatedEntityName": "Connectivity Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Question Type Choices",
+    "Name": "fvsd_questiontypechoices",
+    "OptionSetInfoNameMapping": {
+      "102370000": "Text Input",
+      "102370001": "Select One",
+      "102370002": "Select Multiples",
+      "102370003": "Gallery",
+      "102370004": "Rating"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": true,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "fvsd_questiontype",
+        "OptionSetReferenceEntityName": "Connectivity Questions"
+      }
+    },
+    "OptionSetTypeKey": "PicklistType",
+    "RelatedColumnInvariantName": "fvsd_questiontype",
+    "RelatedEntityName": "Connectivity Questions",
+    "Type": "OptionSetInfo"
+  }
+]

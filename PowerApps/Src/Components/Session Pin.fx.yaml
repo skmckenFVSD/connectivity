@@ -1,0 +1,104 @@
+"'Session Pin' As CanvasComponent":
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =Max(App.Height, App.MinScreenHeight)
+    OnButtonSelect: =true
+    ResetSessionPin: =true
+    ShowSessionPin: =true
+    UserPin: =txtSessionPin.Text
+    Width: =Max(App.Width, App.MinScreenWidth)
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    htmlBackground As htmlViewer:
+        Height: ='Session Pin'.Height-20
+        HtmlText: |-
+            ="<div style='margin:10px;width:" & 'Session Pin'.Width-60 & "px;height:" & 'Session Pin'.Height-60 & "px;background-color:rgba(255,255,255,.9);box-shadow:0 3px 6px 1px  rgba(127,127,127,1); border-radius:15px'></div>"
+        Width: ='Session Pin'.Width-20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+    imgFVSDLogo As image:
+        Image: ='FVSD Shape Logo'
+        X: =40
+        Y: =40
+        ZIndex: =2
+
+    lblSessionPinHeader As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(255, 255, 255, 0)
+        Color: =RGBA(6,85,158,1)
+        DisabledBorderColor: =Self.BorderColor
+        DisabledColor: =Self.Color
+        DisabledFill: =Self.Fill
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 0)
+        Font: ="'Segoe UI', 'Open Sans', sans-serif"
+        FontWeight: =FontWeight.Bold
+        Height: =Self.Size * 4
+        Role: =TextRole.Heading1
+        Size: =40
+        Text: ="Connectivity Surveys" & Char(10) & "Staff Session Pin"
+        Tooltip: =
+        Width: ='Session Pin'.Width - 200
+        X: =('Session Pin'.Width / 2) - (Self.Width / 2)
+        Y: =imgFVSDLogo.Y
+        ZIndex: =3
+
+    txtSessionPin As text:
+        AccessibleLabel: ="Enter Session Pin"
+        Align: =Align.Center
+        Clear: ='Session Pin'.ResetSessionPin
+        Default: =
+        DelayOutput: =true
+        Font: ="'Segoe UI', 'Open Sans', sans-serif"
+        Format: =TextFormat.Number
+        MaxLength: =4
+        Mode: =TextMode.Password
+        PaddingLeft: =5
+        PaddingRight: =40
+        Reset: ='Session Pin'.ResetSessionPin
+        Tooltip: ="Enter Session Pin"
+        Width: =150
+        X: =('Session Pin'.Width / 2) - (Self.Width / 2)
+        Y: =(lblSessionPinInfo.Y + lblSessionPinInfo.Height) + 30
+        ZIndex: =4
+
+    lblSessionPinInfo As label:
+        Align: =Align.Center
+        Font: ="'Segoe UI', 'Open Sans', sans-serif"
+        Height: =Self.Size * 4
+        Size: =20
+        Text: ="Please enter a 4 Digit Session Pin. You will be required to enter this Pin after each completed Student Survey"
+        Width: =lblSessionPinHeader.Width
+        X: =('Session Pin'.Width / 2) - (Self.Width / 2)
+        Y: =(lblSessionPinHeader.Y + lblSessionPinHeader.Height) + 50
+        ZIndex: =5
+
+    btnSetPin As button:
+        BorderColor: =RGBA(255,255,255,1)
+        BorderThickness: =1
+        Color: =RGBA(255,255,255,1)
+        DisabledBorderColor: =Self.Fill
+        DisabledColor: =Self.Color
+        DisabledFill: =Self.Fill
+        Fill: =RGBA(6,85,158,1)
+        FocusedBorderThickness: =1
+        Font: ="'Segoe UI', 'Open Sans', sans-serif"
+        FontWeight: =Bold
+        Height: =50
+        HoverBorderColor: =Self.HoverFill
+        HoverColor: =Self.Color
+        HoverFill: =RGBA(4,59,109,1)
+        OnSelect: ='Session Pin'.OnButtonSelect()
+        PressedColor: =Self.Color
+        PressedFill: =Self.Fill
+        Size: =20
+        Text: ="Set Pin"
+        Tooltip: ="set Pin"
+        Width: =150
+        X: =('Session Pin'.Width / 2) - (Self.Width / 2)
+        Y: =(txtSessionPin.Y + txtSessionPin.Height) + 40
+        ZIndex: =6
+

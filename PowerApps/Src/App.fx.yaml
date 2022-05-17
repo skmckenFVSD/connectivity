@@ -1,0 +1,138 @@
+App As appinfo:
+    BackEnabled: =false
+    OnStart: |-
+        =//Set Teams Parameters
+            Set(TeamsAppID, "07b9b082-ad3a-452a-acdc-0bb35205a70e");
+            Set(
+                glbTeamsContext,
+                {
+                    source: Coalesce(Param("source"), "web"),
+                    groupId: Coalesce(Param("groupId"), "00000000-0000-0000-0000-000000000000"),
+                    teamId: Coalesce(Param("teamId"), "19:[team-id]@thread.skype"),
+                    channelId: Coalesce( Param("channelId"), "19:[channel-id]@thread.skype"),
+                    teamName: Coalesce( Param("teamName"), "Team unknown"),
+                    channelName: Coalesce( Param("channelName"), "Channel unknown"),
+                    chatId: Coalesce( Param("chatId"), "19:[chat-id]@thread.skype"),
+        
+                    theme: Coalesce( Param("theme"), "light"),
+        
+                    channelType: Coalesce( Param("channelType"), ""),
+                    teamSiteUrl: Coalesce( Param("teamSiteUrl"), ""),
+        
+                    locale: Coalesce( Param("locale"), ""),
+                    entityId: Coalesce( Param("entityId"), ""),
+                    subEntityId: Coalesce( Param("subEntityId"), ""),
+                    
+                    tid: Coalesce( Param("tid"), ""),
+                    isFullScreen: Coalesce( Param("isFullScreen"), ""),
+                    userLicenseType: Coalesce( Param("userLicenseType"), ""),
+                    tenantSKU: Coalesce( Param("tenantSKU"), ""),
+                    UserDevice: Coalesce( Param("hostClientType"), "")
+                }
+            ); 
+        
+        //Set App Config
+            If(
+                    !IsBlank(glbTeamsContext.groupId),
+                    Set(
+                        appConfig,
+                        {
+                            Theme: {
+                                FontColour: If(
+                                    glbTeamsContext.theme = "dark",
+                                    White,
+                                    glbTeamsContext.theme = "contrast",
+                                    Yellow,
+                                    Black
+                                ),
+                                BackgroundColour: If(
+                                    glbTeamsContext.theme = "dark",
+                                    RGBA(31, 31, 31, 1),
+                                    glbTeamsContext.theme = "contrast",
+                                    Black,
+                                    RGBA(245, 245, 245, 1)
+                                ),
+                                ButtonColour: If(
+                                    TeamsTheme = "dark",
+                                    White,
+                                    RGBA(98,100, 167,1)
+                                )
+                                }
+                        }
+                    ));
+        
+        //Set Obfuscate
+            Set(varObfuscate,false);
+        
+        //Set Initial School Year Value
+            Set(varFilteredSchoolYear,If(And(Month(Today())>=1,Month(Today())<=8),Year(Today()) - 1 & " / " & Year(Today()),Year(Today()) & " / " & Year(Today()) + 1));
+        
+        //Bypass
+            Set(varApplicationBypass, true);
+            If(varApplicationBypass=true,
+                Set(varApplicationUser,"seanp@fvsd.ab.ca"),Set(varApplicationUser,User().Email));
+        
+        //Get Current User Details
+                Set(varUserRole,Office365Users.UserProfileV2(varApplicationUser).jobTitle);
+                If(Office365Users.UserProfileV2(varApplicationUser).officeLocation = "At Home Learning Center",
+                Set(varUserDepartment,"At-Home Learning Centre"),
+                Set(varUserDepartment,Office365Users.UserProfileV2(varApplicationUser).officeLocation));
+        
+        //Set Application Role
+            Switch(varUserRole,
+                "Teacher", Set(varApplicationRole,"Teacher"),
+                "School Principal", Set(varApplicationRole,"Admin"),
+                "Vice Principal", Set(varApplicationRole,"Admin"),
+                "Assistant Principal", Set(varApplicationRole,"Admin"),
+                Set(varApplicationRole,"Executive"));
+        
+        // Set Application Department
+            Switch(varApplicationRole,
+                "Executive",
+                    Set(varFilteredSchool,
+                        First(SortByColumns(
+                            Filter(Teachers,'School Year'=varFilteredSchoolYear),
+                        "fvsd_school",Ascending)).School);
+                    Set(varFilteredSchoolID,
+                        First(SortByColumns(
+                            Filter(Teachers,'School Year'=varFilteredSchoolYear),
+                        "fvsd_school",Ascending)).'School ID'),
+        
+                "Admin",
+                    Set(varFilteredSchool,
+                        First(SortByColumns(
+                            Filter(Teachers,'School Year'=varFilteredSchoolYear,School=varUserDepartment),
+                        "fvsd_school",Ascending)).School);
+                    Set(varFilteredSchoolID,
+                        First(SortByColumns(
+                            Filter(Teachers,'School Year'=varFilteredSchoolYear,School=varUserDepartment),
+                        "fvsd_school",Ascending)).'School ID'),
+                
+                //All Other Users
+                    Set(varFilteredSchool,
+                        First(SortByColumns(
+                            Filter(Teachers,'School Year'=varFilteredSchoolYear,UPN=varApplicationUser),
+                        "fvsd_school",Ascending)).School);
+                    Set(varFilteredSchoolID,
+                        First(SortByColumns(
+                            Filter(Teachers,'School Year'=varFilteredSchoolYear,UPN=varApplicationUser),
+                        "fvsd_school",Ascending)).'School ID');
+                    Set(varFilteredTeacher,
+                        First(SortByColumns(
+                            Filter(Teachers,'School Year'=varFilteredSchoolYear,UPN=varApplicationUser),
+                        "fvsd_school",Ascending)).'Full Name');
+                    Set(varFilteredTeacherUPN,
+                        First(SortByColumns(
+                            Filter(Teachers,'School Year'=varFilteredSchoolYear,UPN=varApplicationUser),
+                        "fvsd_school",Ascending)).UPN);
+                    Set(varDefaultTeacher,varFilteredTeacher));
+        
+        // Set Default School
+            Set(varDefaultSchool,varFilteredSchool);
+        
+        //Set Session Pin
+            If(IsBlank(varSessionPin),
+                Set(varResetSessionPin,false);
+                Set(varShowSessionPin,true))
+    StartScreen: =scrMain
+

@@ -1,0 +1,668 @@
+scrConnectivity As screen:
+    OnVisible: |-
+        =UpdateContext({varQuestionNo:1})
+
+    conConnectivity As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =1
+
+        conConnectivityHeader As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderColor: =Self.Fill
+            Fill: =RGBA(255, 255, 255, 0)
+            FillPortions: =0
+            Height: =120
+            LayoutMinHeight: =Self.Height
+            LayoutMinWidth: =Self.Width
+            Width: =Parent.Width
+            ZIndex: =1
+
+            galProgress As gallery.galleryHorizontal:
+                BorderColor: =Self.Fill
+                DisplayMode: =DisplayMode.View
+                Fill: =RGBA(255, 255, 255, 0)
+                FocusedBorderColor: =Self.Fill
+                FocusedBorderThickness: =0
+                Height: =20
+                Items: =Sequence(CountRows(colQuestions),1,1)
+                LoadingSpinnerColor: =Self.Fill
+                ShowScrollbar: =false
+                TemplatePadding: =2
+                TemplateSize: |-
+                    =//Set Size
+                        If(CountRows(colQuestions)=0,
+                        Self.Width,
+                        Self.Width / CountRows(colQuestions)
+                        )
+                Width: =Parent.Width
+                Y: =Parent.Height-Self.Height
+                ZIndex: =1
+
+                shpProgress As rectangle:
+                    Fill: |-
+                        =If(ThisItem.Value=varQuestionNo, RGBA(196,227,199,1),
+                        If(ThisItem.Value<varQuestionNo, RGBA(25,162,72,1),
+                        RGBA(255,255,255,1)))
+                    Height: =Parent.TemplateHeight-2
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth-2
+                    Y: =2
+                    ZIndex: =1
+
+            shpHeaderBackground As rectangle:
+                BorderColor: =Self.Fill
+                DisplayMode: =DisplayMode.View
+                Fill: =RGBA(6,85,158,1)
+                FocusedBorderColor: =Self.Fill
+                FocusedBorderThickness: =0
+                Height: =Parent.Height - galProgress.Height
+                Width: =Parent.Width
+                X: =Parent.X
+                Y: =Parent.Y
+                ZIndex: =2
+
+            lblQuestionNo As label:
+                Align: =Align.Center
+                BorderColor: =Self.Fill
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =Self.Fill
+                DisabledColor: =Self.Color
+                DisabledFill: =Self.Fill
+                DisplayMode: =DisplayMode.View
+                Font: ="'Segoe UI', 'Open Sans', sans-serif"
+                FontWeight: =FontWeight.Bold
+                Height: =shpHeaderBackground.Height
+                HoverBorderColor: =Self.Fill
+                PressedBorderColor: =Self.Fill
+                Size: =40
+                Text: ="Question " & varQuestionNo & " of " & CountRows(colQuestions)
+                Width: =shpHeaderBackground.Width
+                X: =shpHeaderBackground.X
+                Y: =shpHeaderBackground.Y
+                ZIndex: =3
+
+        conConnectvityQuestion As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderColor: =Self.Fill
+            Fill: =RGBA(255, 255, 255, 0)
+            FillPortions: =0
+            Height: =150
+            LayoutMinHeight: =Self.Height
+            LayoutMinWidth: =Self.Width
+            Width: =Parent.Width
+            ZIndex: =2
+
+            lblQuestion As label:
+                Align: =Align.Center
+                BorderColor: =Self.Fill
+                Color: =RGBA(51, 51, 51, 1)
+                DisabledBorderColor: =Self.Fill
+                DisabledColor: =Self.Color
+                DisabledFill: =Self.Fill
+                DisplayMode: =DisplayMode.View
+                Font: ="'Segoe UI', 'Open Sans', sans-serif"
+                FontWeight: =FontWeight.Semibold
+                Height: =Self.Size * 3
+                HoverBorderColor: =Self.Fill
+                PressedBorderColor: =Self.Fill
+                Size: =26
+                Text: =Last(FirstN(colQuestions,varQuestionNo)).Question
+                Width: =Parent.Width-20
+                X: =10
+                Y: =10
+                ZIndex: =1
+
+            lblQuestionInstruction As label:
+                Align: =Align.Center
+                BorderColor: =Self.Fill
+                Color: =RGBA(51, 51, 51, 1)
+                DisabledBorderColor: =Self.Fill
+                DisabledColor: =Self.Color
+                DisabledFill: =Self.Fill
+                DisplayMode: =DisplayMode.View
+                Font: ="'Segoe UI', 'Open Sans', sans-serif"
+                Height: =Self.Size * 2
+                HoverBorderColor: =Self.Fill
+                Italic: =true
+                PressedBorderColor: =Self.Fill
+                Size: =20
+                Text: =Last(FirstN(colQuestions,varQuestionNo)).Instruction
+                Width: =lblQuestion.Width
+                X: =lblQuestion.X
+                Y: =(lblQuestion.Y + lblQuestion.Height) + 10
+                ZIndex: =2
+
+        conConnectivityGallery As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderColor: =Self.Fill
+            Fill: =RGBA(255, 255, 255, 0)
+            FillPortions: =0
+            Height: =Parent.Height - (conConnectivityHeader.Height + conConnectvityQuestion.Height + conConnectivityControls.Height)
+            LayoutMinHeight: =Self.Height
+            LayoutMinWidth: =Self.Width
+            Visible: =If(Text(Last(FirstN(colQuestions,varQuestionNo)).Type)="Gallery",true,false)
+            Width: =Parent.Width
+            ZIndex: =3
+
+            "galQuestionOption As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver4.0'":
+                BorderColor: =Self.Fill
+                Default: =varResetGallery
+                Fill: =RGBA(255, 255, 255, 0)
+                FocusedBorderColor: =Self.Fill
+                FocusedBorderThickness: =0
+                Height: =Parent.Height-20
+                Items: |-
+                    =//Get Data
+                        SortByColumns(
+                            Filter(colQuestionOptions,
+                                QuestionGUID=Last(FirstN(colQuestions,varQuestionNo)).'Question GUID'
+                            ),
+                        "Order", Ascending)
+                OnSelect: |-
+                    =UpdateContext({varQuestionType:Text(Last(FirstN(colQuestions,varQuestionNo)).Type)});
+                    UpdateContext({varQuestionOption:ThisItem.OptionGUID});
+                    UpdateContext({varQuestionAnswer:ThisItem.Option});
+                    UpdateContext({varAnswerFlagged:ThisItem.Flagged})
+                TemplatePadding: =0
+                TemplateSize: |
+                    =//Divide Template With by Gallery Items
+                        If(Mod(CountRows(Self.AllItems),2)=0,
+                            (Parent.Width-200) /  2,
+                            (Parent.Width-200) / 3
+                            )
+                Width: =Parent.Width-200
+                WrapCount: =2
+                X: =(Parent.Width / 2) - (Self.Width / 2)
+                Y: =10
+                ZIndex: =1
+
+                imgOptionImage As image:
+                    BorderColor: =Self.Fill
+                    DisabledBorderColor: =Self.Fill
+                    DisabledFill: =Self.Fill
+                    Fill: =RGBA(255, 255, 255, 0)
+                    FocusedBorderThickness: =0
+                    Height: |-
+                        =//Set Height
+                        If(Text(Last(FirstN(colQuestions,varQuestionNo)).'Gallery Option')="Image",
+                            Parent.TemplateHeight - 10,
+                            Parent.TemplateHeight - (lblOptionLabel.Height + 10)
+                        )
+                    HoverBorderColor: =Self.Fill
+                    HoverFill: =Self.Fill
+                    Image: =ThisItem.Image.Value
+                    OnSelect: =Select(Parent)
+                    PressedBorderColor: =Self.Fill
+                    PressedFill: =Self.Fill
+                    Width: =Parent.TemplateWidth - 120
+                    X: =(Parent.TemplateWidth / 2) - ((Self.Width + 120) / 2)
+                    Y: |-
+                        =//Set Height
+                        If(Text(Last(FirstN(colQuestions,varQuestionNo)).'Gallery Option')="Image",
+                            (Parent.TemplateHeight / 2) - (Self.Height  / 2),
+                            0)
+                    ZIndex: =1
+
+                lblOptionLabel As label:
+                    Align: =Align.Center
+                    BorderColor: =Self.Fill
+                    Color: =RGBA(51, 51, 51, 1)
+                    DisabledBorderColor: =Self.Fill
+                    DisabledColor: =Self.Color
+                    DisabledFill: =Self.Fill
+                    DisplayMode: =DisplayMode.View
+                    Font: ="'Segoe UI', 'Open Sans', sans-serif"
+                    FontWeight: =FontWeight.Bold
+                    Height: =Self.Size * 2
+                    HoverBorderColor: =Self.Fill
+                    Italic: =true
+                    PressedBorderColor: =Self.Fill
+                    Size: =26
+                    Text: =ThisItem.Option
+                    Visible: |-
+                        =//Set Visibility
+                        If(Text(Last(FirstN(colQuestions,varQuestionNo)).'Gallery Option')="Image",false,true)
+                    Width: =Parent.TemplateWidth - 120
+                    X: =(Parent.TemplateWidth / 2) - ((Self.Width + 120) / 2)
+                    Y: =Parent.TemplateHeight - (Self.Height  +10)
+                    ZIndex: =2
+
+                icoCheckMark As icon.Check:
+                    BorderColor: =RGBA(255, 255, 255, 1)
+                    Color: =RGBA(25,162,72,1)
+                    DisabledBorderColor: =Self.BorderColor
+                    DisabledColor: =Self.Color
+                    Fill: =RGBA(255, 255, 255, 1)
+                    FocusedBorderThickness: =0
+                    Height: =Parent.TemplateHeight
+                    HoverBorderColor: =Self.BorderColor
+                    HoverColor: =Self.Color
+                    Icon: =Icon.Check
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =Self.Width / 6
+                    PaddingLeft: =Self.Width / 6
+                    PaddingRight: =Self.Width / 6
+                    PaddingTop: =Self.Width / 6
+                    PressedBorderColor: =Self.BorderColor
+                    PressedColor: =Self.Color
+                    Visible: =If(varQuestionAnswer=ThisItem.Option,true,false)
+                    Width: =Parent.TemplateWidth - imgOptionImage.Width
+                    X: =imgOptionImage.Width
+                    Y: =imgOptionImage.Y
+                    ZIndex: =3
+
+                shpOptionSelected As rectangle:
+                    AccessibleLabel: =ThisItem.Option
+                    BorderColor: =Self.Fill
+                    Fill: =RGBA(255, 255, 255, 0)
+                    FocusedBorderColor: =Self.Fill
+                    FocusedBorderThickness: =0
+                    Height: =Parent.TemplateHeight
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    ZIndex: =4
+
+        conConnectivitySelectOne As groupContainer.manualLayoutContainer:
+            AlignInContainer: =conConnectivityGallery.AlignInContainer
+            BorderColor: =conConnectivityGallery.BorderColor
+            BorderThickness: =conConnectivityGallery.BorderThickness
+            Fill: =conConnectivityGallery.Fill
+            FillPortions: =0
+            Height: =conConnectivityGallery.Height
+            LayoutMinHeight: =conConnectivityGallery.LayoutMinHeight
+            LayoutMinWidth: =conConnectivityGallery.LayoutMinWidth
+            Visible: =If(Text(Last(FirstN(colQuestions,varQuestionNo)).Type)="Select One",true,false)
+            Width: =conConnectivityGallery.Width
+            X: =conConnectivityGallery.X
+            Y: =conConnectivityGallery.Y
+            ZIndex: =4
+
+            optSelectOne As radio:
+                AccessibleLabel: =Self.Selected.Option
+                BorderColor: =RGBA(255,255,255,0)
+                Color: =RGBA(51,51,51,1)
+                DisabledBorderColor: =Self.BorderColor
+                DisabledColor: =Self.Color
+                DisabledFill: =Self.Fill
+                Font: ="'Segoe UI', 'Open Sans', sans-serif"
+                Height: =galQuestionOption.Height
+                HoverColor: =Self.RadioSelectionFill
+                Items: |-
+                    =//Get Data
+                        SortByColumns(
+                            Filter(colQuestionOptions,
+                                QuestionGUID=Last(FirstN(colQuestions,varQuestionNo)).'Question GUID'
+                            ),
+                        "Order", Ascending)
+                LineHeight: =2.8
+                OnSelect: |-
+                    =UpdateContext({varQuestionType:Text(Last(FirstN(colQuestions,varQuestionNo)).Type)});
+                    UpdateContext({varQuestionOption:Self.Selected.OptionGUID});
+                    UpdateContext({varQuestionAnswer:Self.Selected.Option});
+                    UpdateContext({varAnswerFlagged:Self.Selected.Flagged})
+                PaddingBottom: =0
+                PaddingLeft: =5
+                PaddingTop: =0
+                RadioBackgroundFill: =ColorFade(RGBA(255,255,255,1), -5%)
+                RadioBorderColor: =RGBA(101, 128, 187, 1)
+                RadioSelectionFill: =RGBA(6,85,158,1)
+                RadioSize: =60
+                Reset: =varResetQuestion
+                Size: =20
+                Width: =Parent.Width / 2.5
+                X: =(Parent.Width / 2) - (Self.Width / 2)
+                Y: =galQuestionOption.Y
+                ZIndex: =1
+
+        conConnectivitySelectMultiples As groupContainer.manualLayoutContainer:
+            AlignInContainer: =conConnectivityGallery.AlignInContainer
+            BorderColor: =conConnectivityGallery.BorderColor
+            BorderThickness: =conConnectivityGallery.BorderThickness
+            Fill: =conConnectivityGallery.Fill
+            Height: =conConnectivityGallery.Height
+            LayoutMinHeight: =conConnectivityGallery.LayoutMinHeight
+            LayoutMinWidth: =conConnectivityGallery.LayoutMinWidth
+            Visible: =If(Text(Last(FirstN(colQuestions,varQuestionNo)).Type)="Select Multiples",true,false)
+            Width: =conConnectivityGallery.Width
+            X: =conConnectivityGallery.X
+            Y: =conConnectivityGallery.Y
+            ZIndex: =5
+
+            lstSelectMultiple As listbox:
+                BorderColor: =RGBA(220, 220, 220, 1)
+                BorderThickness: =1
+                Color: =RGBA(51, 51, 51, 1)
+                DisabledBorderColor: =Self.BorderColor
+                DisabledColor: =RGBA(255,255,255,1)
+                DisabledFill: =RGBA(255, 255, 255, 1)
+                DisabledSelectionColor: =RGBA(255, 255, 255, 1)
+                DisabledSelectionFill: =Self.DisabledSelectionColor
+                FocusedBorderThickness: =1
+                Font: ="'Segoe UI', 'Open Sans', sans-serif"
+                Height: =optSelectOne.Height
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =ColorFade(Self.PressedFill,20%)
+                ItemPaddingLeft: =30
+                Items: |-
+                    =//Get Data
+                        SortByColumns(
+                            Filter(colQuestionOptions,
+                                QuestionGUID=Last(FirstN(colQuestions,varQuestionNo)).'Question GUID'
+                            ),
+                        "Order", Ascending)
+                LineHeight: =2.1
+                OnSelect: =ClearCollect(colSelectMultipleResponse,lstSelectMultiple.SelectedItems)
+                PressedFill: =RGBA(6,85,158,1)
+                Reset: =varResetQuestion
+                SelectionColor: =RGBA(255,255,255,1)
+                SelectionFill: =RGBA(62,96,170,1)
+                Size: =20
+                Width: =optSelectOne.Width
+                X: =optSelectOne.X
+                Y: =optSelectOne.Y
+                ZIndex: =1
+
+        conConnectivityTextInput As groupContainer.manualLayoutContainer:
+            AlignInContainer: =conConnectivityGallery.AlignInContainer
+            BorderColor: =conConnectivityGallery.BorderColor
+            BorderThickness: =conConnectivityGallery.BorderThickness
+            Fill: =conConnectivityGallery.Fill
+            Height: =conConnectivityGallery.Height
+            LayoutMinHeight: =conConnectivityGallery.LayoutMinHeight
+            LayoutMinWidth: =conConnectivityGallery.LayoutMinWidth
+            Visible: =If(Text(Last(FirstN(colQuestions,varQuestionNo)).Type)="Text Input",true,false)
+            Width: =conConnectivityGallery.Width
+            X: =conConnectivityGallery.X
+            Y: =conConnectivityGallery.Y
+            ZIndex: =6
+
+            txtInputText As text:
+                BorderColor: =RGBA(230, 230, 230, 1)
+                BorderThickness: =1
+                Color: =RGBA(51, 51, 51, 1)
+                Default: =""
+                DisabledBorderColor: =Self.BorderColor
+                DisabledColor: =Self.Color
+                DisabledFill: =Self.Fill
+                EnableSpellCheck: =true
+                FocusedBorderThickness: =1
+                Font: ="'Segoe UI', 'Open Sans', sans-serif"
+                Height: =optSelectOne.Height
+                HoverBorderColor: =Self.BorderColor
+                HoverColor: =Self.Color
+                HoverFill: =Self.Fill
+                LineHeight: =2.1
+                Mode: =TextMode.MultiLine
+                OnChange: |-
+                    =UpdateContext({varQuestionType:Text(Last(FirstN(colQuestions,varQuestionNo)).Type)})
+                OnSelect: =
+                PaddingLeft: =5
+                PressedBorderColor: =Self.BorderColor
+                Reset: =varResetQuestion
+                Size: =20
+                Width: =optSelectOne.Width
+                X: =optSelectOne.X
+                Y: =optSelectOne.Y
+                ZIndex: =1
+
+        conConnectivityRating As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderColor: =Self.Fill
+            Fill: =RGBA(255, 255, 255, 0)
+            FillPortions: =0
+            Height: =Parent.Height - (conConnectivityHeader.Height + conConnectvityQuestion.Height + conConnectivityControls.Height)
+            LayoutMinHeight: =Self.Height
+            LayoutMinWidth: =Self.Width
+            Visible: =If(Text(Last(FirstN(colQuestions,varQuestionNo)).Type)="Rating",true,false)
+            Width: =Parent.Width
+            ZIndex: =7
+
+            galRating As gallery.galleryVertical:
+                BorderColor: =Self.Fill
+                Fill: =RGBA(255, 255, 255, 0)
+                FocusedBorderColor: =Self.Fill
+                FocusedBorderThickness: =0
+                Height: =Parent.Height-20
+                Items: |-
+                    =//Get Data
+                        SortByColumns(
+                            Filter(colQuestionOptions,
+                                QuestionGUID=Last(FirstN(colQuestions,varQuestionNo)).'Question GUID'
+                            ),
+                        "Order", Ascending)
+                Layout: =Layout.Vertical
+                ShowScrollbar: =false
+                TemplateSize: =60
+                Width: =Parent.Width-200
+                X: =(Parent.Width / 2) - (Self.Width / 2)
+                ZIndex: =2
+
+                lblRatingItem As label:
+                    BorderColor: =RGBA(255, 255, 255, 0)
+                    Color: =RGBA(51, 51, 51, 1)
+                    DisabledBorderColor: =Self.BorderColor
+                    DisabledColor: =Self.Color
+                    DisabledFill: =Self.Fill
+                    DisplayMode: =DisplayMode.View
+                    Fill: =RGBA(255, 255, 255, 0)
+                    Font: ="'Segoe UI', 'Open Sans', sans-serif"
+                    Height: =Parent.TemplateHeight
+                    OnSelect: =Select(Parent)
+                    Size: =20
+                    Text: =ThisItem.Option
+                    Width: =(Parent.TemplateWidth - 60) / 2
+                    Wrap: =false
+                    ZIndex: =1
+
+                optRatingItem As radio:
+                    AccessibleLabel: =Self.Selected.Value
+                    BorderColor: =RGBA(255,255,255,0)
+                    Color: =RGBA(51,51,51,1)
+                    DisabledBorderColor: =Self.BorderColor
+                    DisabledColor: =Self.Color
+                    DisabledFill: =Self.Fill
+                    Font: ="'Segoe UI', 'Open Sans', sans-serif"
+                    Height: =Parent.TemplateHeight - 15
+                    HoverColor: =Self.RadioSelectionFill
+                    Items: =Sequence(Last(FirstN(colQuestions,varQuestionNo)).'High Rating',Last(FirstN(colQuestions,varQuestionNo)).'Low Rating',1)
+                    Layout: =Layout.Horizontal
+                    OnSelect: |-
+                        =If(CountIf(colRatingResponse,ResponseOption = ThisItem.OptionGUID)>0,
+                            Patch(colRatingResponse,
+                                First(
+                                    Filter(colRatingResponse,ResponseOption in ThisItem.Option)),
+                                        {
+                                            ResponseRating:Self.Selected.Value
+                                        }
+                                    ),
+                        Collect(colRatingResponse,
+                            {
+                                ResponseOption:ThisItem.OptionGUID,
+                                ResponseRating:Self.Selected.Value,
+                                ResponseFlagged:ThisItem.Flagged}))
+                    PaddingBottom: =0
+                    PaddingLeft: =5
+                    PaddingTop: =0
+                    RadioBackgroundFill: =ColorFade(RGBA(255,255,255,1), -5%)
+                    RadioBorderColor: =RGBA(101, 128, 187, 1)
+                    RadioSelectionFill: =RGBA(6,85,158,1)
+                    Reset: =varResetQuestion
+                    Size: =20
+                    Width: =(Parent.TemplateWidth - 60) / 2
+                    X: =(lblRatingItem.X + lblRatingItem.Width) + 10
+                    Y: =lblRatingItem.Y + 10
+                    ZIndex: =2
+
+        conConnectivityControls As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =100
+            LayoutMinHeight: =Self.Height
+            LayoutMinWidth: =Self.Width
+            Width: =Parent.Width
+            ZIndex: =8
+
+            btnNext As button:
+                BorderColor: =RGBA(230,230,230,1)
+                BorderThickness: =1
+                Color: =RGBA(255,255,255,1)
+                DisabledBorderColor: =Self.Fill
+                DisabledColor: =Self.Color
+                DisabledFill: =Self.Fill
+                Fill: =RGBA(245,166,38,1)
+                FocusedBorderThickness: =1
+                Font: ="'Segoe UI', 'Open Sans', sans-serif"
+                FontWeight: =Bold
+                Height: =60
+                HoverBorderColor: =Self.Fill
+                HoverColor: =Self.Color
+                HoverFill: =ColorFade(Self.Fill, 20%)
+                OnSelect: |-
+                    =//Capture Answer
+                        If(varQuestionNo=1,
+                            Collect(colStudentAnswers,
+                                Switch(Text(Last(FirstN(colQuestions,varQuestionNo)).Type),
+                                    //Question is Text
+                                    "Text Input",
+                                                    {
+                                                        QuestionID:Last(FirstN(colQuestions,varQuestionNo)).'Question GUID',
+                                                        QuestionType:varQuestionType,
+                                                        OptionID: Blank(),
+                                                        Answer: txtInputText.Text,
+                                                        Flagged: Blank()
+                                                    },
+                                    "Gallery",
+                                                    {
+                                                        QuestionID:Last(FirstN(colQuestions,varQuestionNo)).'Question GUID',
+                                                        QuestionType:varQuestionType,
+                                                        OptionID: varQuestionOption,
+                                                        Answer: varQuestionAnswer,
+                                                        Flagged: varAnswerFlagged
+                                                    },
+                                    "Select One",
+                                                    {
+                                                        QuestionID:Last(FirstN(colQuestions,varQuestionNo)).'Question GUID',
+                                                        QuestionType:varQuestionType,
+                                                        OptionID: varQuestionOption,
+                                                        Answer: varQuestionAnswer,
+                                                        Flagged: varAnswerFlagged
+                                                    },
+                                    "Rating",
+                                        ForAll(colRatingResponse,
+                                                    {
+                                                        QuestionID:Last(FirstN(colQuestions,varQuestionNo)).'Question GUID',
+                                                        QuestionType:"Rating",
+                                                        OptionID: ResponseOption,
+                                                        Answer: Text(ResponseRating),
+                                                        Flagged: ResponseFlagged
+                                                    }
+                                        ),
+                                    "Select Multiples",
+                                        ForAll(colSelectMultipleResponse,
+                                                    {
+                                                        QuestionID:Last(FirstN(colQuestions,varQuestionNo)).'Question GUID',
+                                                        QuestionType:varQuestionType,
+                                                        OptionID: OptionGUID,
+                                                        Answer:Option,
+                                                        Flagged: varAnswerFlagged
+                                                    }
+                                        )   
+                                    )
+                    
+                            ),
+                            Collect(colStudentAnswers,
+                                Switch(Text(Last(FirstN(colQuestions,varQuestionNo)).Type),
+                                    //Question is Text
+                                    "Text Input",
+                                                    {
+                                                        QuestionID:Last(FirstN(colQuestions,varQuestionNo)).'Question GUID',
+                                                        QuestionType:varQuestionType,
+                                                        OptionID: Blank(),
+                                                        Answer: txtInputText.Text,
+                                                        Flagged: Blank()
+                                                    },
+                                    "Gallery",
+                                                    {
+                                                        QuestionID:Last(FirstN(colQuestions,varQuestionNo)).'Question GUID',
+                                                        QuestionType:varQuestionType,
+                                                        OptionID: varQuestionOption,
+                                                        Answer: varQuestionAnswer,
+                                                        Flagged: varAnswerFlagged
+                                                    },
+                                    "Select One",
+                                                    {
+                                                        QuestionID:Last(FirstN(colQuestions,varQuestionNo)).'Question GUID',
+                                                        QuestionType:varQuestionType,
+                                                        OptionID: varQuestionOption,
+                                                        Answer: varQuestionAnswer,
+                                                        Flagged: varAnswerFlagged
+                                                    },
+                                    "Rating",
+                                        ForAll(colRatingResponse,
+                                                    {
+                                                        QuestionID:Last(FirstN(colQuestions,varQuestionNo)).'Question GUID',
+                                                        QuestionType:"Rating",
+                                                        OptionID: ResponseOption,
+                                                        Answer: Text(ResponseRating),
+                                                        Flagged: ResponseFlagged
+                                                    }
+                                        ),
+                                    "Select Multiples",
+                                        ForAll(colSelectMultipleResponse,
+                                                    {
+                                                        QuestionID:Last(FirstN(colQuestions,varQuestionNo)).'Question GUID',
+                                                        QuestionType:varQuestionType,
+                                                        OptionID: OptionGUID,
+                                                        Answer:Option,
+                                                        Flagged: varAnswerFlagged
+                                                    }
+                                        )   
+                                    )
+                            )
+                        );
+                    
+                    //Clear Selected Answer
+                        UpdateContext({varQuestionAnswer:Blank()});
+                        UpdateContext({varResetQuestion:true});UpdateContext({varResetQuestion:false});
+                        UpdateContext({varResetGallery:{}});
+                    
+                    //Select Next Question
+                        If(varQuestionNo=CountRows(colQuestions),
+                        Navigate(scrFinish,None),
+                        UpdateContext({varQuestionNo:varQuestionNo + 1}))
+                PressedColor: =Self.Color
+                PressedFill: =Self.Fill
+                RadiusBottomLeft: =20
+                RadiusBottomRight: =20
+                RadiusTopLeft: =20
+                RadiusTopRight: =20
+                Size: =26
+                Text: =If(varQuestionNo=CountRows(colQuestions),"Finish","Next")
+                Visible: |-
+                    =//Question is Text
+                    If(Text(Last(FirstN(colQuestions,varQuestionNo)).Type)="Text Input",
+                        If(IsBlank(txtInputText),false,true),
+                    
+                    // Question is Rating
+                    If(Text(Last(FirstN(colQuestions,varQuestionNo)).Type)="Rating",
+                        If(CountRows(
+                            Filter(colQuestionOptions,
+                                QuestionGUID=Last(FirstN(colQuestions,varQuestionNo)).'Question GUID')) = 
+                            CountRows(colRatingResponse),true,false),
+                    
+                    // Question is Select Multiple
+                    If(Text(Last(FirstN(colQuestions,varQuestionNo)).Type)="Select Multiples",
+                        If(
+                            CountRows(colSelectMultipleResponse)>0,true,false),
+                    
+                    
+                    //Other Question Type    
+                        If(IsBlank(varQuestionAnswer),false,true))))
+                Width: =270
+                X: =(Parent.Width / 2) - (Self.Width / 2)
+                Y: =20
+                ZIndex: =1
+

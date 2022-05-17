@@ -1,0 +1,100 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "fvsd_connectivitysurveyschedulequestions",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "fvsd_connectivitysurveyschedulequestion",
+    "MaxGetRowsCount": 500,
+    "Name": "Connectivity Survey Schedule Questions",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "fvsd_connectivitysurveyschedulequestion_AsyncOperations": "System Jobs",
+      "fvsd_connectivitysurveyschedulequestion_BulkDeleteFailures": "Bulk Delete Failures",
+      "fvsd_connectivitysurveyschedulequestion_DuplicateBaseRecord": "Duplicate Records (fvsd_connectivitysurveyschedulequestion_DuplicateBaseRecord)",
+      "fvsd_connectivitysurveyschedulequestion_DuplicateMatchingRecord": "Duplicate Records (fvsd_connectivitysurveyschedulequestion_DuplicateMatchingRecord)",
+      "fvsd_connectivitysurveyschedulequestion_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "fvsd_connectivitysurveyschedulequestion_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "fvsd_connectivitysurveyschedulequestion_ProcessSession": "Process Sessions",
+      "fvsd_connectivitysurveyschedulequestion_SyncErrors": "Sync Errors",
+      "fvsd_connectivitysurveyschedulequestionid": "Connectivity Survey Schedule Question",
+      "fvsd_name": "Name",
+      "fvsd_question": "Question",
+      "fvsd_questionorder": "Question Order",
+      "fvsd_surveyschedule": "Survey Schedule",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Connectivity Survey Schedule Questions",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Connectivity Survey Schedule Questions (Views)",
+    "Name": "_fvsd_connectivitysurveyschedulequestion_views",
+    "RelatedEntityName": "Connectivity Survey Schedule Questions",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0642b73a-ca2a-4580-a62e-a7e46f988ed0": "Connectivity Survey Schedule Question Advanced Find View",
+      "1f59f390-458a-4944-ba22-402614874e44": "Connectivity Survey Schedule Question Lookup View",
+      "7e7bc511-ab92-4b52-97b4-f91035beb602": "Active Connectivity Survey Schedule Questions",
+      "c0d194a6-f554-45ae-9ff3-19000504bd2a": "Inactive Connectivity Survey Schedule Questions",
+      "f7aace63-4ead-4bea-98e4-c35d28537cb2": "Connectivity Survey Schedule Question Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Connectivity Survey Schedule Questions)",
+    "Name": "fvsd_connectivitysurveyschedulequestion_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Connectivity Survey Schedule Questions"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Connectivity Survey Schedule Questions",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Connectivity Survey Schedule Questions)",
+    "Name": "fvsd_connectivitysurveyschedulequestion_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Connectivity Survey Schedule Questions"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Connectivity Survey Schedule Questions",
+    "Type": "OptionSetInfo"
+  }
+]

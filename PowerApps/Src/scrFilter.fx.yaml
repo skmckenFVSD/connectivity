@@ -1,0 +1,201 @@
+scrFilter As screen:
+
+    lblFilteredTeachers As label:
+        BorderColor: =RGBA(255, 255, 255, 0)
+        Color: =RGBA(51,51,51,1)
+        DisabledBorderColor: =Self.BorderColor
+        DisabledColor: =Self.Color
+        DisabledFill: =Self.Fill
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 0)
+        Font: ="'Segoe UI', 'Open Sans', sans-serif"
+        FontWeight: =FontWeight.Bold
+        Height: =30
+        Role: =TextRole.Heading2
+        Size: =11
+        Text: ="Selected School Teachers"
+        Tooltip: =cmpMenu.SelectedMenuItem
+        Width: =Parent.Width / 6
+        X: =5
+        Y: =5
+        ZIndex: =1
+
+    "galFilterTeachers As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
+        Height: =Parent.Height - (lblFilteredTeachers.Height + 10)
+        Items: |-
+            =//Get Teachers
+                Switch(varApplicationRole,
+                    "Teacher",
+                        Filter(Teachers,
+                            'School Year' = varFilteredSchoolYear,
+                            School = varFilteredSchool,
+                            UPN = varApplicationUser,
+                            'Section Grouping'="Homeroom"),
+                    "Admin",
+                    Filter(Teachers,
+                        'School Year' = varFilteredSchoolYear,
+                        School = varFilteredSchool,
+                        'Section Grouping'="Homeroom"))     
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =54
+        Width: =390
+        X: =lblFilteredTeachers.X
+        Y: =(lblFilteredTeachers.Y + lblFilteredTeachers.Height)
+        ZIndex: =2
+
+        lblFilterTeacherName As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.'Full Name'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.Width-40
+            X: =16
+            Y: =12
+            ZIndex: =1
+
+        lblFilterTeacherCourse As label:
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.'Course Name'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.Width-40
+            X: =16
+            Y: =32
+            ZIndex: =2
+
+    lblFilteredSHR As label:
+        BorderColor: =RGBA(255, 255, 255, 0)
+        Color: =RGBA(51,51,51,1)
+        DisabledBorderColor: =Self.BorderColor
+        DisabledColor: =Self.Color
+        DisabledFill: =Self.Fill
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 0)
+        Font: ="'Segoe UI', 'Open Sans', sans-serif"
+        FontWeight: =FontWeight.Bold
+        Height: =30
+        Role: =TextRole.Heading2
+        Size: =11
+        Text: ="Students in Homeroom"
+        Tooltip: =cmpMenu.SelectedMenuItem
+        Width: =Parent.Width / 7
+        X: =(lblFilteredTeachers.X + lblFilteredTeachers.Width) + 10
+        Y: =lblFilteredTeachers.Y
+        ZIndex: =3
+
+    galFilteredStudentSection As gallery.galleryVertical:
+        Height: =galFilterTeachers.Height
+        Items: |-
+            =//Get Student Sections
+                GroupBy(
+                    Filter('Student Sections',
+                        'School Year'=varFilteredSchoolYear,
+                        'School ID' = varFilteredSchoolID,
+                        Name in galFilterTeachers.AllItems.Name),
+                "fvsd_asn","grpStudentTest"
+                )
+        Layout: =Layout.Vertical
+        TemplateSize: =58
+        Width: =lblFilteredSHR.Width
+        X: =lblFilteredSHR.X
+        Y: =galFilterTeachers.Y
+        ZIndex: =4
+
+        lblFilteredSSASN As label:
+            Size: =10
+            Text: =ThisItem.fvsd_asn
+            Width: =Parent.TemplateWidth-60
+            X: =12
+            Y: =12
+            ZIndex: =1
+
+    lblFilteredStudents As label:
+        BorderColor: =RGBA(255, 255, 255, 0)
+        Color: =RGBA(51,51,51,1)
+        DisabledBorderColor: =Self.BorderColor
+        DisabledColor: =Self.Color
+        DisabledFill: =Self.Fill
+        DisplayMode: =DisplayMode.View
+        Fill: =RGBA(255, 255, 255, 0)
+        Font: ="'Segoe UI', 'Open Sans', sans-serif"
+        FontWeight: =FontWeight.Bold
+        Height: =30
+        Role: =TextRole.Heading2
+        Size: =11
+        Text: ="Student Details"
+        Tooltip: =cmpMenu.SelectedMenuItem
+        Width: =Parent.Width / 5
+        X: =(lblFilteredSHR.X + lblFilteredSHR.Width) + 10
+        Y: =lblFilteredSHR.Y
+        ZIndex: =5
+
+    "galFilteredStudent As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
+        Height: =galFilterTeachers.Height
+        Items: =Filter(Students, ASN in galFilteredStudentSection.AllItems.fvsd_asn)
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =81
+        Width: =lblFilteredStudents.Width
+        X: =lblFilteredStudents.X
+        Y: =galFilterTeachers.Y
+        ZIndex: =6
+
+        lblFilteredStudentASN As label:
+            Font: =Font.'Segoe UI'
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.ASN
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 104
+            X: =32
+            Y: =16
+            ZIndex: =1
+
+        lblFilteredStudentName As label:
+            Font: =Font.'Segoe UI'
+            Height: =Self.Size * 1.8
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.'Student Name'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 104
+            X: =32
+            Y: =lblFilteredStudentASN.Y + lblFilteredStudentASN.Height + 2
+            ZIndex: =2
+
+        lblFilteredStudentGrade As label:
+            Font: =Font.'Segoe UI'
+            Height: =Self.Size * 4
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.Grade
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 104
+            X: =32
+            Y: =lblFilteredStudentName.Y + lblFilteredStudentName.Height + 4
+            ZIndex: =3
+
