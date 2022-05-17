@@ -3194,36 +3194,6 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.TeamsAppID"
-                }
-              ],
-              "physicalLocation": {
-                "address": {
-                  "fullyQualifiedName": "App.TeamsAppID",
-                  "relativeAddress": 0
-                }
-              },
-              "properties": {
-                "member": "TeamsAppID",
-                "module": "App",
-                "type": "App"
-              }
-            }
-          ],
-          "message": {
-            "id": "issue"
-          },
-          "properties": {
-            "level": "Medium"
-          },
-          "ruleId": "app-UnusedVariables",
-          "ruleIndex": 3
-        },
-        {
-          "locations": [
-            {
-              "logicalLocations": [
-                {
                   "fullyQualifiedName": "App.appConfig"
                 }
               ],
@@ -3265,6 +3235,36 @@
               },
               "properties": {
                 "member": "varFilteredTeacherUPN",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 3
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "App.TeamsAppID"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.TeamsAppID",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "TeamsAppID",
                 "module": "App",
                 "type": "App"
               }

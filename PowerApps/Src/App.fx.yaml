@@ -68,7 +68,7 @@ App As appinfo:
             Set(varFilteredSchoolYear,If(And(Month(Today())>=1,Month(Today())<=8),Year(Today()) - 1 & " / " & Year(Today()),Year(Today()) & " / " & Year(Today()) + 1));
         
         //Bypass
-            Set(varApplicationBypass, true);
+            Set(varApplicationBypass, false);
             If(varApplicationBypass=true,
                 Set(varApplicationUser,"seanp@fvsd.ab.ca"),Set(varApplicationUser,User().Email));
         
