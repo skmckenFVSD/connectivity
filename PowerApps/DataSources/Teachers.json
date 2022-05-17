@@ -1,0 +1,108 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "fvsd_teachers",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "fvsd_teacher",
+    "MaxGetRowsCount": 500,
+    "Name": "Teachers",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "fvsd_assessment_teacher": "Assessments",
+      "fvsd_coursename": "Course Name",
+      "fvsd_courseno": "Course No",
+      "fvsd_firstname": "First Name",
+      "fvsd_fullname": "Full Name",
+      "fvsd_lastname": "Last Name",
+      "fvsd_name": "Name",
+      "fvsd_school": "School",
+      "fvsd_schoolid": "School ID",
+      "fvsd_schoolyear": "School Year",
+      "fvsd_sectiongrouping": "Section Grouping",
+      "fvsd_teacher_AsyncOperations": "System Jobs",
+      "fvsd_teacher_BulkDeleteFailures": "Bulk Delete Failures",
+      "fvsd_teacher_DuplicateBaseRecord": "Duplicate Records (fvsd_teacher_DuplicateBaseRecord)",
+      "fvsd_teacher_DuplicateMatchingRecord": "Duplicate Records (fvsd_teacher_DuplicateMatchingRecord)",
+      "fvsd_teacher_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "fvsd_teacher_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "fvsd_teacher_ProcessSession": "Process Sessions",
+      "fvsd_teacher_SyncErrors": "Sync Errors",
+      "fvsd_teacherid": "Teacher",
+      "fvsd_upn": "UPN",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Teachers",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Teachers (Views)",
+    "Name": "_fvsd_teacher_views",
+    "RelatedEntityName": "Teachers",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "3accb606-1053-4004-ba18-1ae6cbbadd87": "Inactive Teachers",
+      "3bab6021-570c-4e44-a52d-659e1bbb51a6": "Teacher Advanced Find View",
+      "9618542e-48dd-406f-8616-2f5a0afcd170": "Teacher Lookup View",
+      "e67681e2-1576-4d57-adff-c2a305fea576": "Teacher Associated View",
+      "ec487633-0c1f-42fe-81f1-98b6cce678df": "Active Teachers"
+    }
+  },
+  {
+    "DisplayName": "Status (Teachers)",
+    "Name": "fvsd_teacher_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Teachers"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Teachers",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Teachers)",
+    "Name": "fvsd_teacher_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Teachers"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Teachers",
+    "Type": "OptionSetInfo"
+  }
+]

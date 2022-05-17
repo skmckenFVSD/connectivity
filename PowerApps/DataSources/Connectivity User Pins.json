@@ -1,0 +1,98 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "fvsd_connectivityuserpins",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "fvsd_connectivityuserpin",
+    "MaxGetRowsCount": 500,
+    "Name": "Connectivity User Pins",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "fvsd_connectivityuserpin_AsyncOperations": "System Jobs",
+      "fvsd_connectivityuserpin_BulkDeleteFailures": "Bulk Delete Failures",
+      "fvsd_connectivityuserpin_DuplicateBaseRecord": "Duplicate Records (fvsd_connectivityuserpin_DuplicateBaseRecord)",
+      "fvsd_connectivityuserpin_DuplicateMatchingRecord": "Duplicate Records (fvsd_connectivityuserpin_DuplicateMatchingRecord)",
+      "fvsd_connectivityuserpin_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "fvsd_connectivityuserpin_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "fvsd_connectivityuserpin_ProcessSession": "Process Sessions",
+      "fvsd_connectivityuserpin_SyncErrors": "Sync Errors",
+      "fvsd_connectivityuserpinid": "Connectivity User Pin",
+      "fvsd_name": "Name",
+      "fvsd_pin": "Pin",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Connectivity User Pins",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Connectivity User Pins (Views)",
+    "Name": "_fvsd_connectivityuserpin_views",
+    "RelatedEntityName": "Connectivity User Pins",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "2b2d970a-60be-413e-81cc-0f7a0b2e91fe": "Connectivity User Pin Advanced Find View",
+      "4277f28b-8eb3-4933-8f55-6d5f95b5c6cb": "Connectivity User Pin Lookup View",
+      "6d9ce8f0-95cf-4a76-8220-fe1ee8b56e3c": "Inactive Connectivity User Pins",
+      "93c1a9d8-2107-40b0-ae03-90030f37c623": "Active Connectivity User Pins",
+      "dd324892-6119-4f3a-8455-9a0d0efbcdf6": "Connectivity User Pin Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (Connectivity User Pins)",
+    "Name": "fvsd_connectivityuserpin_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Connectivity User Pins"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Connectivity User Pins",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Connectivity User Pins)",
+    "Name": "fvsd_connectivityuserpin_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Connectivity User Pins"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Connectivity User Pins",
+    "Type": "OptionSetInfo"
+  }
+]

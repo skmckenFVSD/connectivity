@@ -1,0 +1,213 @@
+{
+  "QualifiedValues": [
+    {
+      "Kind": "default.cds_fvsd_student_forms",
+      "Namespace": "Students (Forms)",
+      "Values": {
+        "Information": "a37a1c30-fd31-43a4-bf7b-f64626df17a6"
+      }
+    },
+    {
+      "Kind": "default.cds_systemuser_forms",
+      "Namespace": "Users (Forms)",
+      "Values": {
+        "Application User": "d26924ef-4d80-46f7-ab1d-e6ae80a54ce8",
+        "Information": "094fb08a-77bb-49e0-b7ea-8dbddfd01294",
+        "User": "c2cd9e55-d4b4-4b55-9951-16ead79643e5",
+        "User form – Business": "c2413504-7eb2-4c59-a087-95d819866114",
+        "User Hierarchy Tile Form": "c68d6c09-d7a7-4959-8d0f-44b8cff9b452"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_teachersection_forms",
+      "Namespace": "Teacher Section (Forms)",
+      "Values": {
+        "Information": "a77abf78-e337-4a3d-ac2a-371ccad58f72"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_teacher_forms",
+      "Namespace": "Teachers (Forms)",
+      "Values": {
+        "Information": "fa417c30-dd51-4a05-96c1-e68bdf054d11"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_studentsection_forms",
+      "Namespace": "Student Sections (Forms)",
+      "Values": {
+        "Information": "add9197f-8b07-429d-ace3-bbd2135594c4"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_connectivytquestion_forms",
+      "Namespace": "Connectivity Questions (Forms)",
+      "Values": {
+        "Information": "6a3dee1c-af05-4a4a-9260-808490f768fb"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_connectivityuserpin_forms",
+      "Namespace": "Connectivity User Pins (Forms)",
+      "Values": {
+        "Information": "8e430c17-e3c7-4048-b4d1-d1e045f462a1"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_connectivityquestionoption_forms",
+      "Namespace": "Connectivity Question Options (Forms)",
+      "Values": {
+        "Connectivity Question Option quick create form": "bb43151a-03bc-ec11-983f-0022483d6892",
+        "Information": "86c72a46-fb4d-4d55-b755-f44a358d27e7"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_connectivitysurveyschedule_forms",
+      "Namespace": "Connectivity Survey Schedules (Forms)",
+      "Values": {
+        "Information": "c0c5b43e-9801-4924-a699-a59f1bbbbecb"
+      }
+    },
+    {
+      "Kind": "default.cds_fileattachment_forms",
+      "Namespace": "FileAttachments (Forms)",
+      "Values": {}
+    },
+    {
+      "Kind": "default.cds_fvsd_connectivitysurveyschedulequestion_forms",
+      "Namespace": "Connectivity Survey Schedule Questions (Forms)",
+      "Values": {
+        "Information": "d55eb1d3-ff7c-42a4-bfb5-f4b88c5bb1b1"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_connectivitysurvey_forms",
+      "Namespace": "Connectivity Surveys (Forms)",
+      "Values": {
+        "Information": "9d901edd-ad6c-41eb-97a4-fa1b46efcf81"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_connectivitysurveyresponse_forms",
+      "Namespace": "Connectivity Survey Responses (Forms)",
+      "Values": {
+        "Information": "118e22e0-102c-4132-9955-70d3909d91bc"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_schoolsection_forms",
+      "Namespace": "School Sections (Forms)",
+      "Values": {
+        "Information": "130e5c9f-41fd-4195-998e-9a949fe6c2e5"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_assessment_forms",
+      "Namespace": "Assessments (Forms)",
+      "Values": {
+        "Information": "17facc23-6b05-4fef-bfa5-685018a5ce81",
+        "TOWRE": "e18eb8a3-b9aa-ec11-983e-0022483d8906",
+        "WRAT-5": "0f767335-a0ba-ec11-983f-0022483d6892"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_tosrecreference_forms",
+      "Namespace": "TOSREC References (Forms)",
+      "Values": {
+        "Information": "c5b58e1b-1381-455f-b838-cc333c61655f",
+        "TOSREC Main": "f78055fb-4c7f-4502-8e00-ca67ec10ee7f"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_tosrecresult_forms",
+      "Namespace": "TOSREC Results (Forms)",
+      "Values": {
+        "Information": "b0fd5f69-d7a3-41d7-a2fd-9810f08ae392"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_toswrfreference_forms",
+      "Namespace": "TOSWRF References (Forms)",
+      "Values": {
+        "Information": "1fe9212a-9cfa-469d-a6e9-ce636a6e6e7b",
+        "TOSWRF Main": "a6c605e8-341d-492a-86ad-ba68a06ef5b9"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_towrereference_forms",
+      "Namespace": "TOWRE References (Forms)",
+      "Values": {
+        "Information": "6982346b-1057-4e77-81e0-a16f15397414",
+        "TOWRE Main": "40cf5c77-2129-4bd6-8103-42e693749370"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_tntreference_forms",
+      "Namespace": "TNT References (Forms)",
+      "Values": {
+        "Information": "015295f5-c64a-4834-ba32-af5b7abc8f7d"
+      }
+    },
+    {
+      "Kind": "default.cds_environmentvariabledefinition_forms",
+      "Namespace": "Environment Variable Definitions (Forms)",
+      "Values": {
+        "Information": "3853733b-a351-455d-b686-d2d05027ba4d"
+      }
+    },
+    {
+      "Kind": "default.cds_environmentvariablevalue_forms",
+      "Namespace": "Environment Variable Values (Forms)",
+      "Values": {
+        "Information": "f574a3ab-1060-43ee-a95f-9aa922b497db"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_assessmentreview_forms",
+      "Namespace": "Assessment Reviews (Forms)",
+      "Values": {
+        "Information": "f26d16ae-d39f-4280-b728-ddcf088c2f9b"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_wratreference_forms",
+      "Namespace": "WRAT References (Forms)",
+      "Values": {
+        "Information": "0c2ed3db-93d4-4de9-b288-8cb74d4f144a"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_interventionmethodology_forms",
+      "Namespace": "Intervention Methodologies (Forms)",
+      "Values": {
+        "Information": "7e80a861-147e-49d5-a290-f0f609389a16"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_intervention_forms",
+      "Namespace": "Interventions (Forms)",
+      "Values": {
+        "Information": "4f8eb528-3e7b-4695-8de5-baaf762c0956"
+      }
+    },
+    {
+      "Kind": "default.cds_fvsd_ctoppreference_forms",
+      "Namespace": "CTOPP References (Forms)",
+      "Values": {
+        "Information": "8c8b5771-3a23-4275-89de-defc4ea8b83c"
+      }
+    },
+    {
+      "Kind": "default.cds_bulkdeletefailure_forms",
+      "Namespace": "Bulk Delete Failures (Forms)",
+      "Values": {}
+    },
+    {
+      "Kind": "default.cds_fvsd_assessmentreview_forms",
+      "Namespace": "Assessment Reviews_1 (Forms)",
+      "Values": {
+        "Information": "f26d16ae-d39f-4280-b728-ddcf088c2f9b"
+      }
+    }
+  ]
+}

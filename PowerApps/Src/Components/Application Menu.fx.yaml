@@ -1,0 +1,205 @@
+"'Application Menu' As CanvasComponent":
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =290
+    MenuItems: |-
+        =Table(
+                {
+                    Type: "Information",
+                    Label: "Classes and Students",
+                    Caption:"Class and Student Information ",        
+                    ButtonAction: "",
+                    ButtonFill: RGBA(6,85,158,1),
+                    ButtonBorder: RGBA(6,85,158,1),
+                    ButtonHoverFill: RGBA(4,59,109,1),
+                    ButtonHoverBorder: RGBA(6,85,158,1),
+                    HeaderTextColour: RGBA(51,51,51,1),
+                    ButtonTextColour: RGBA(255,255,255,1),   
+                    Image: Icon.People,
+                    ImageColour: RGBA(255,255,255,1),
+                    UserRole: "Teacher, Admin, Executive"
+                },
+                {
+                    Type: "Category",
+                    Label: "Students",
+                    Caption:"View Students",
+                    ButtonAction: "ViewStudents",
+                    ButtonFill: RGBA(255,255,255,1),
+                    ButtonBorder: RGBA(204,204,204,1),
+                    ButtonHoverFill: RGBA(230,230,230,1),
+                    ButtonHoverBorder: RGBA(173,173,173,1),
+                    HeaderTextColour: RGBA(51,51,51,1),
+                    ButtonTextColour: RGBA(51,51,51,1),       
+                    Image: Icon.Person,
+                    ImageColour: RGBA(6,85,158,1),
+                    UserRole: "Teacher, Admin, Executive"
+                },
+                {
+                    Type: "Gap",
+                    Label: "Gap 2"
+                },
+                {
+                    Type: "Information",
+                    Label: "Connectivity",
+                    Caption:
+                        If(varApplicationRole="Executive",
+                            "Divisional Surveys and Questions",
+                            "Divisional and Faculty Surveys and Questions"),
+                    ButtonAction: "",
+                    ButtonFill: RGBA(6,85,158,1),
+                    ButtonBorder: RGBA(6,85,158,1),
+                    ButtonHoverFill: RGBA(4,59,109,1),
+                    ButtonHoverBorder: RGBA(6,85,158,1),
+                    HeaderTextColour: RGBA(51,51,51,1),
+                    ButtonTextColour: RGBA(255,255,255,1),      
+                    Image: Icon.Journal,
+                    ImageColour: RGBA(6,85,158,1),
+                    UserRole: "Admin, Executive"
+                },
+                {
+                    Type: "Category",
+                    Label: "Surveys",
+                    Caption:If(varApplicationRole="Executive",
+                            "Divisional Surveys",
+                            "Divisional and Faculty Surveys"),
+                    ButtonAction: "ViewSurveys",
+                    ButtonFill: RGBA(255,255,255,1),
+                    ButtonBorder: RGBA(204,204,204,1),
+                    ButtonHoverFill: RGBA(230,230,230,1),
+                    ButtonHoverBorder: RGBA(173,173,173,1),
+                    HeaderTextColour: RGBA(51,51,51,1),
+                    ButtonTextColour: RGBA(51,51,51,1),        
+                    Image: Icon.Journal,
+                    ImageColour: RGBA(6,85,158,1),
+                    UserRole: "Admin, Executive"
+                },
+                {
+                    Type: "Category",
+                    Label: "Question Bank",
+                    Caption:If(varApplicationRole="Executive",
+                            "DivisionalQuestions",
+                            "Faculty Questions"),
+                    ButtonAction: "ViewQuestions",
+                    ButtonFill: RGBA(255,255,255,1),
+                    ButtonBorder: RGBA(204,204,204,1),
+                    ButtonHoverFill: RGBA(230,230,230,1),
+                    ButtonHoverBorder: RGBA(173,173,173,1),
+                    HeaderTextColour: RGBA(51,51,51,1),
+                    ButtonTextColour: RGBA(51,51,51,1),        
+                    Image: Icon.Journal,
+                    ImageColour: RGBA(6,85,158,1),
+                    UserRole: "Admin, Executive"
+                }
+                )
+    ObfuscateValue: =true
+    OnButtonSelect: ="Text"
+    SelectedMenuAction: =galApplicationMenu.Selected.ButtonAction
+    SelectedMenuItem: =galApplicationMenu.Selected.Caption
+    Width: =240
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    btnSchedules As button:
+        Align: =Align.Left
+        BorderColor: =Self.Fill
+        BorderThickness: =1
+        Color: =RGBA(255,255,255,1)
+        DisabledBorderColor: =Self.Fill
+        DisabledColor: =Self.Color
+        DisabledFill: =Self.Fill
+        Fill: =RGBA(6,85,158,1)
+        FocusedBorderThickness: =1
+        Font: ="'Segoe UI', 'Open Sans', sans-serif"
+        FontWeight: =Normal
+        Height: =30
+        HoverBorderColor: =Self.HoverFill
+        HoverColor: =Self.Color
+        HoverFill: =RGBA(4,59,109,1)
+        OnSelect: =
+        PaddingLeft: =10
+        PressedColor: =Self.Color
+        PressedFill: =Self.Fill
+        Size: =10
+        Text: ="Connectivity Schedules"
+        Tooltip: ="Connectivity Schedules"
+        Width: =galApplicationMenu.Width
+        X: =galApplicationMenu.X
+        Y: =(galApplicationMenu.Y + galApplicationMenu.Height)  + 20
+        ZIndex: =3
+
+    galApplicationMenu As gallery.variableTemplateHeightGallery:
+        BorderColor: =RGBA(0,125,154,1)
+        Default: ={}
+        FocusedBorderThickness: =0
+        Height: =If(varApplicationRole = "Teacher", 90,220)
+        Items: ='Application Menu'.MenuItems
+        Layout: =Layout.Vertical
+        OnSelect: =
+        ShowScrollbar: =false
+        TemplatePadding: =3
+        TemplateSize: =40
+        Width: ='Application Menu'.Width-10
+        X: =5
+        Y: =5
+        ZIndex: =4
+
+        btnApplicationMenu As button:
+            Align: =Align.Left
+            BorderColor: =ThisItem.ButtonBorder
+            BorderThickness: =1
+            Color: =ThisItem.ButtonTextColour
+            DisabledBorderColor: =ThisItem.ButtonBorder
+            DisabledColor: =ThisItem.ButtonTextColour
+            DisabledFill: =ThisItem.ButtonFill
+            Fill: =ThisItem.ButtonFill
+            FocusedBorderThickness: =1
+            Font: ="'Segoe UI', 'Open Sans', sans-serif"
+            FontWeight: =Normal
+            Height: =Switch(ThisItem.Type,"Gap",20,30)
+            HoverBorderColor: =ThisItem.ButtonHoverBorder
+            HoverColor: =ThisItem.ButtonTextColour
+            HoverFill: =ThisItem.ButtonHoverFill
+            OnSelect: ='Application Menu'.OnButtonSelect()
+            PaddingLeft: =Switch(ThisItem.Type,"Category",40,10)
+            PressedBorderColor: =ThisItem.ButtonBorder
+            PressedColor: =ThisItem.ButtonTextColour
+            PressedFill: =ThisItem.ButtonFill
+            Size: =10
+            Text: =ThisItem.Label
+            Tooltip: =ThisItem.Caption
+            Visible: |-
+                =Switch(ThisItem.Type,"Gap",false,
+                    If(varApplicationRole in ThisItem.UserRole,true,false))
+            Width: =Switch(ThisItem.Type,"Category",galApplicationMenu.TemplateWidth-30,galApplicationMenu.TemplateWidth-20)
+            X: =Switch(ThisItem.Type,"Category",20,10)
+            Y: =5
+            ZIndex: =1
+
+        icoApplicationMenu As icon.Add:
+            AccessibleLabel: =ThisItem.Label
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =ThisItem.ImageColour
+            DisabledBorderColor: =Self.BorderColor
+            DisabledColor: =ThisItem.ImageColour
+            DisplayMode: =DisplayMode.View
+            FocusedBorderThickness: =0
+            Height: =btnApplicationMenu.Height-10
+            HoverBorderColor: =Self.BorderColor
+            HoverColor: =ThisItem.ImageColour
+            Icon: =ThisItem.Image
+            OnSelect: =Select(Parent)
+            PaddingBottom: =2
+            PaddingLeft: =2
+            PaddingRight: =2
+            PaddingTop: =2
+            PressedBorderColor: =Self.BorderColor
+            PressedColor: =ThisItem.ImageColour
+            Tooltip: =ThisItem.Caption
+            Visible: |-
+                =If(ThisItem.Type="Category",
+                    If(varApplicationRole in ThisItem.UserRole,true,false))
+            Width: =btnApplicationMenu.Height-10
+            X: =btnApplicationMenu.X+5
+            Y: =btnApplicationMenu.Y+5
+            ZIndex: =2
+

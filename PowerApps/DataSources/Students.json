@@ -1,0 +1,126 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "fvsd_students",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "fvsd_student",
+    "MaxGetRowsCount": 500,
+    "Name": "Students",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "fvsd_asn": "ASN",
+      "fvsd_assessment_student": "Assessments",
+      "fvsd_band": "Band",
+      "fvsd_bandresidence": "Band Residence",
+      "fvsd_classof": "Class of",
+      "fvsd_connectivitysurvey_student": "Connectivity Surveys",
+      "fvsd_dob": "Date of Birth",
+      "fvsd_esl1": "ESL 1",
+      "fvsd_esl2": "ESL 2",
+      "fvsd_firstname": "First Name",
+      "fvsd_fnmi": "FNMI",
+      "fvsd_gender": "Gender",
+      "fvsd_grade": "Grade",
+      "fvsd_homeroom": "Home Room",
+      "fvsd_intervention_student": "Interventions",
+      "fvsd_lastname": "Last Name",
+      "fvsd_middlename": "Middle Name",
+      "fvsd_obfuscateasn": "Obfuscate ASN",
+      "fvsd_obfuscatename": "Obfuscate Name",
+      "fvsd_powerschoolid": "PowerSchool ID",
+      "fvsd_school": "School",
+      "fvsd_schoolid": "School ID",
+      "fvsd_spedassessment": "SPED Assessment",
+      "fvsd_spedcategory": "SPED Category",
+      "fvsd_spedcode": "SPED Code",
+      "fvsd_spedseries": "SPED Series",
+      "fvsd_spokenlanguage": "Spoken Language",
+      "fvsd_statuscode": "Status Code",
+      "fvsd_statusdetail": "Status Detail",
+      "fvsd_student_AsyncOperations": "System Jobs",
+      "fvsd_student_BulkDeleteFailures": "Bulk Delete Failures",
+      "fvsd_student_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "fvsd_student_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "fvsd_student_ProcessSession": "Process Sessions",
+      "fvsd_student_SyncErrors": "Sync Errors",
+      "fvsd_studentid": "Student",
+      "fvsd_studentname": "Student Name",
+      "fvsd_treatyid": "Treaty ID",
+      "fvsd_userid": "User ID",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Students",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Students (Views)",
+    "Name": "_fvsd_student_views",
+    "RelatedEntityName": "Students",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "4d315ca0-c7fc-49b6-bbbe-c951b78a4ffc": "Active Students",
+      "5b7b56ea-d9ed-4823-80b9-e89fea1c2e7f": "Student Associated View",
+      "6b401c39-d1d2-433c-bd4f-09ba820f8367": "Student Advanced Find View",
+      "7b1ac638-e7fa-494d-82d3-672f6c581ec4": "Inactive Students",
+      "d01c75aa-3741-47f0-96ec-b6c262b9f9c3": "Student Lookup View"
+    }
+  },
+  {
+    "DisplayName": "Status (Students)",
+    "Name": "fvsd_student_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Students"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Students",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Students)",
+    "Name": "fvsd_student_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Students"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Students",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,103 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "fvsd_studentsections",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "fvsd_studentsection",
+    "MaxGetRowsCount": 500,
+    "Name": "Student Sections",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "fvsd_asn": "ASN",
+      "fvsd_coursename": "Course Name",
+      "fvsd_courseno": "Course No",
+      "fvsd_name": "Name",
+      "fvsd_schoolid": "School ID",
+      "fvsd_schoolyear": "School Year",
+      "fvsd_studentsection_AsyncOperations": "System Jobs",
+      "fvsd_studentsection_BulkDeleteFailures": "Bulk Delete Failures",
+      "fvsd_studentsection_DuplicateBaseRecord": "Duplicate Records (fvsd_studentsection_DuplicateBaseRecord)",
+      "fvsd_studentsection_DuplicateMatchingRecord": "Duplicate Records (fvsd_studentsection_DuplicateMatchingRecord)",
+      "fvsd_studentsection_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "fvsd_studentsection_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "fvsd_studentsection_ProcessSession": "Process Sessions",
+      "fvsd_studentsection_SyncErrors": "Sync Errors",
+      "fvsd_studentsectionid": "Student Section",
+      "fvsd_teacherupn": "Teacher UPN",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Student Sections",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Student Sections (Views)",
+    "Name": "_fvsd_studentsection_views",
+    "RelatedEntityName": "Student Sections",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "0554438e-39b6-4a3b-8cd9-e215ab5e42e5": "Student Section Associated View",
+      "6ce47263-742c-4e8f-a92c-13d1a8d07a4f": "Student Section Advanced Find View",
+      "92f546ce-4896-4b8c-9db6-7fc9c53872e6": "Inactive Student Sections",
+      "c54b309c-c18d-4dc2-8351-c3ae166395e3": "Student Section Lookup View",
+      "c9c252ac-fb26-429c-9110-c485b478ad4d": "Active Student Sections"
+    }
+  },
+  {
+    "DisplayName": "Status (Student Sections)",
+    "Name": "fvsd_studentsection_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Student Sections"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Student Sections",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Student Sections)",
+    "Name": "fvsd_studentsection_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Student Sections"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Student Sections",
+    "Type": "OptionSetInfo"
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "fvsd_connectivitysurveyresponses",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "fvsd_connectivitysurveyresponse",
+    "MaxGetRowsCount": 500,
+    "Name": "Connectivity Survey Responses",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "fvsd_connectivitysurvey": "Survey",
+      "fvsd_connectivitysurveyresponse_AsyncOperations": "System Jobs",
+      "fvsd_connectivitysurveyresponse_BulkDeleteFailures": "Bulk Delete Failures",
+      "fvsd_connectivitysurveyresponse_DuplicateBaseRecord": "Duplicate Records (fvsd_connectivitysurveyresponse_DuplicateBaseRecord)",
+      "fvsd_connectivitysurveyresponse_DuplicateMatchingRecord": "Duplicate Records (fvsd_connectivitysurveyresponse_DuplicateMatchingRecord)",
+      "fvsd_connectivitysurveyresponse_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "fvsd_connectivitysurveyresponse_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "fvsd_connectivitysurveyresponse_ProcessSession": "Process Sessions",
+      "fvsd_connectivitysurveyresponse_SyncErrors": "Sync Errors",
+      "fvsd_connectivitysurveyresponseid": "Connectivity Survey Response",
+      "fvsd_name": "Name",
+      "fvsd_question": "Question",
+      "fvsd_questionoption": "Question Option",
+      "fvsd_questiontype": "Question Type",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Connectivity Survey Responses",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Connectivity Survey Responses (Views)",
+    "Name": "_fvsd_connectivitysurveyresponse_views",
+    "RelatedEntityName": "Connectivity Survey Responses",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "9549b499-3855-4f1c-8245-811f8b513eba": "Connectivity Survey Response Advanced Find View",
+      "9d3774a7-a034-4357-8611-9bedfcd17b6f": "Connectivity Survey Response Associated View",
+      "b4f89060-0a66-44ca-9745-c07f96235ca0": "Connectivity Survey Response Lookup View",
+      "c282445f-89d7-41df-a7e5-edb45925d811": "Inactive Connectivity Survey Responses",
+      "d1b28adb-2bd0-4f6c-8715-38efcfaed142": "Active Connectivity Survey Responses"
+    }
+  },
+  {
+    "DisplayName": "Status (Connectivity Survey Responses)",
+    "Name": "fvsd_connectivitysurveyresponse_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Connectivity Survey Responses"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Connectivity Survey Responses",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Connectivity Survey Responses)",
+    "Name": "fvsd_connectivitysurveyresponse_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Connectivity Survey Responses"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Connectivity Survey Responses",
+    "Type": "OptionSetInfo"
+  }
+]

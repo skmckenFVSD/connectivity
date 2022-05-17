@@ -1,0 +1,56 @@
+<application xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:service="https://canada-001.azure-apim.net/apim/logicflows" xmlns:siena="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11" siena:serviceId="QuestionResponseNotification" xmlns="http://wadl.dev.java.net/2009/02">
+  <doc title="Question Response Notification" />
+  <grammars>
+    <jsonTypes targetNamespace="https://canada-001.azure-apim.net/apim/logicflows" xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+      <string name="ManualTriggerInput_InitializeStudentvariable_Value_def" />
+      <string name="ManualTriggerInput_InitializeTeachervariable_Value_def" />
+      <string name="ManualTriggerInput_InitializeQuestionvariable_Value_def" />
+      <string name="ManualTriggerInput_InitializeResponsevariable_Value_def" />
+      <string name="ManualTriggerInput_InitializeApplicationRolevariable_Value_def" />
+      <string name="ManualTriggerInput_InitializeSendtovariable_Value_def" />
+      <string name="ManualTriggerInput_InitializeSignedinUservariable_Value_def" />
+      <string name="ManualTriggerInput_InitializeSendtovariable_Value_1_def" />
+      <object name="ManualTriggerInput">
+        <property name="InitializeStudentvariable_Value" type="string" />
+        <property name="InitializeTeachervariable_Value" type="string" />
+        <property name="InitializeQuestionvariable_Value" type="string" />
+        <property name="InitializeResponsevariable_Value" type="string" />
+        <property name="InitializeApplicationRolevariable_Value" type="string" />
+        <property name="InitializeSendtovariable_Value" type="string" />
+        <property name="InitializeSignedinUservariable_Value" type="string" />
+        <property name="InitializeSendtovariable_Value_1" type="string" />
+      </object>
+    </jsonTypes>
+  </grammars>
+  <resources siena:authenticationProviderHref="#PowerAppAuth" base="https://canada-001.azure-apim.net/apim/logicflows">
+    <resource path="/{connectionId}/triggers/manual/run">
+      <param style="template" name="connectionId" type="xs:string" required="true" />
+      <method siena:requiresAuthentication="true" name="POST" id="Run">
+        <doc title="Runs a logic flow trigger." />
+        <request>
+          <param style="query" name="api-version" type="xs:string" required="true" fixed="2015-02-01-preview">
+            <doc title="The api version" />
+          </param>
+          <representation mediaType="application/json">
+            <param style="plain" name="InitializeStudentvariable_Value" path="/InitializeStudentvariable_Value" type="xs:string" required="true" />
+            <param style="plain" name="InitializeTeachervariable_Value" path="/InitializeTeachervariable_Value" type="xs:string" required="true" />
+            <param style="plain" name="InitializeQuestionvariable_Value" path="/InitializeQuestionvariable_Value" type="xs:string" required="true" />
+            <param style="plain" name="InitializeResponsevariable_Value" path="/InitializeResponsevariable_Value" type="xs:string" required="true" />
+            <param style="plain" name="InitializeApplicationRolevariable_Value" path="/InitializeApplicationRolevariable_Value" type="xs:string" required="true" />
+            <param style="plain" name="InitializeSendtovariable_Value" path="/InitializeSendtovariable_Value" type="xs:string" required="true" />
+            <param style="plain" name="InitializeSignedinUservariable_Value" path="/InitializeSignedinUservariable_Value" type="xs:string" required="true" />
+            <param style="plain" name="InitializeSendtovariable_Value_1" path="/InitializeSendtovariable_Value_1" type="xs:string" required="true" />
+          </representation>
+        </request>
+      </method>
+    </resource>
+  </resources>
+  <authenticationProviders xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+    <connectionProvider id="PowerAppAuth" siena:connectionProviderId="logicflows" />
+  </authenticationProviders>
+  <template xmlns="http://schemas.microsoft.com/MicrosoftProjectSiena/WADL/2014/11">
+    <variable name="connectionId">
+      <modifyParams style="template" name="connectionId" attribute="fixed" />
+    </variable>
+  </template>
+</application>
